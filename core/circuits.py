@@ -1,0 +1,175 @@
+"""Trotter circuits carrying twirled coherent errors (CLAUDE.md §2.3, §2.5, §4).
+
+trotter_single_qubit  — single qubit, L identical cycles [Rx(alpha), Rz(s_ell*theta)].
+trotter_tfim          — 2-qubit TFIM Trotter step with a twirled Rzz coherent error.
+
+Each builder returns the final state, the ideal pre-error state |chi>, and the
+propagated error generators G-tilde_ell (dense operators) used for the Fisher
+analysis. Optional per-cycle noise channel supports the Phase-5 noisy study.
+"""
+
+import numpy as np
+
+from .single_qubit_gates import Rx, Rz, X_gate, Y_gate, Z_gate
+from .two_qubit_gates import Rzz
+from .operator_on_state import single_qubit_op, two_qubit_op
+from .pauli import pauli, pauli_string, propagate_generator
+from .noise import apply_incoherent_layer
+
+_Z = pauli("Z")
+
+
+def _embed_1q(op2, qubit, n):
+    """Full 2^n operator for a 2x2 op on `qubit` (1-indexed, big-endian)."""
+    ops = [np.eye(2, dtype=complex)] * n
+    ops[qubit - 1] = op2
+    out = ops[0]
+    for o in ops[1:]:
+        out = np.kron(out, o)
+    return out
+
+
+def _zero_state(n):
+    s = np.zeros(2**n, dtype=complex)
+    s[0] = 1.0
+    return s
+
+
+def trotter_single_qubit(L, alpha, theta, signs, noise=None, noise_channel=None, rng=None):
+    """Single-qubit depth model (CLAUDE.md §2.3; noise wiring per NOISE_MODULE.md §5).
+
+    Cycle ell (1..L): apply ideal U0 = Rx(alpha), then coherent error Rz(s_ell*theta),
+    then (if `noise` is a NoiseProfile) one incoherent noise layer. Input |0>.
+
+    Parameters
+    ----------
+    L : int              number of Trotter cycles
+    alpha : float        ideal rotation angle per cycle
+    theta : float        coherent Z-error angle (the recoverable signal)
+    signs : sequence     length-L labels s_ell in {+1,-1}
+    noise : NoiseProfile or None
+        When None (default) the builder is the exact noiseless statevector model and
+        reproduces Oracles O1-O5 (N5). When a NoiseProfile is given, the qubit is
+        evolved as a density matrix through incoherent layers (amplitude damping,
+        dephasing, depolarizing) after each cycle; readout is applied separately at
+        the outcome stage (noise.apply_readout). Returns rho instead of a statevector.
+    noise_channel : callable or None
+        Legacy per-cycle callable noise_channel(state, rng) (statevector path only).
+    rng : np.random.Generator or None.
+
+    Returns
+    -------
+    state_or_rho : ndarray
+        length-2 statevector when noise is None; 2x2 density matrix when noise given.
+    chi   : ndarray      ideal state |chi> = Rx(L*alpha)|0>  (statevector, noiseless).
+    gens  : list[ndarray]  propagated generators G-tilde_ell = Rx((L-ell)a) Z Rx((L-ell)a)^†,
+                           ell = 1..L; G^2 = I and <G-tilde_ell>_chi = cos(ell*alpha) (S2, S4).
+    """
+    assert len(signs) == L, "signs must have length L"
+    n = 1
+    chi = single_qubit_op(_zero_state(n), Rx(L * alpha), 1, n)
+    gens = [propagate_generator(_Z, Rx((L - ell) * alpha)) for ell in range(1, L + 1)]
+
+    if noise is None:
+        state = _zero_state(n)
+        for ell in range(1, L + 1):
+            state = single_qubit_op(state, Rx(alpha), 1, n)
+            state = single_qubit_op(state, Rz(signs[ell - 1] * theta), 1, n)
+            if noise_channel is not None:
+                state = noise_channel(state, rng)
+        return state, chi, gens
+
+    # Density-matrix path with a NoiseProfile.
+    RxU = _embed_1q(Rx(alpha), 1, n)
+    rho = np.zeros((2, 2), dtype=complex)
+    rho[0, 0] = 1.0
+    for ell in range(1, L + 1):
+        rho = RxU @ rho @ RxU.conj().T
+        Ez = _embed_1q(Rz(signs[ell - 1] * theta), 1, n)
+        rho = Ez @ rho @ Ez.conj().T
+        rho = apply_incoherent_layer(rho, noise, n, mode="dm")
+    return rho, chi, gens
+
+
+def trotter_tfim(L, tau, g, delta, signs, n=2, noise=None, rng=None):
+    """Two-qubit TFIM Trotter model (CLAUDE.md §2.5; noise wiring per NOISE_MODULE.md §5).
+
+    H = Z1 Z2 + g (X1 + X2). Each Trotter cycle:
+        exp(-i tau Z1 Z2) . exp(-i tau g X1) . exp(-i tau g X2)
+    The 'hard' gate exp(-i tau Z1 Z2) = Rzz(2 tau) carries the coherent
+    over-rotation error: it is applied as Rzz(2 tau + s_ell * delta), i.e. a
+    signed coherent error exp(-i s_ell delta Z1 Z2 / 2) with generator Z1 Z2.
+    Input |00>.
+
+    noise : NoiseProfile or None
+        When None (default) the exact noiseless statevector model (reproduces O5 /
+        conservation). When a NoiseProfile is given, evolves the density matrix and
+        applies an incoherent layer (single-qubit channels on both qubits + two-qubit
+        depolarizing on the entangled pair (1,2)) after each cycle. Returns rho.
+
+    Returns
+    -------
+    state_or_rho : ndarray   final 2-qubit statevector (noise None) or 4x4 density matrix.
+    chi   : ndarray      ideal final state |chi> = U0^L |00> (the output-frame reference).
+    gens  : list[ndarray]  propagated Pauli-string generators G-tilde_ell (4x4),
+                           ell = 1..L, each squaring to I (S5 generalized). Defined in
+                           the output frame: G-tilde_ell = U0^(L-ell) ZZ (U0^(L-ell))^dagger.
+    """
+    assert len(signs) == L
+    ZZ = pauli_string("ZZ")
+
+    def ideal_cycle_unitary():
+        # Build the dense 4x4 ideal cycle unitary U0 = Rzz(2tau) . Rx1(2 tau g) . Rx2(2 tau g)
+        # Note exp(-i tau g X) = Rx(2 tau g) per R_P(theta)=exp(-i theta P/2).
+        Rx1 = np.kron(Rx(2 * tau * g), np.eye(2))
+        Rx2 = np.kron(np.eye(2), Rx(2 * tau * g))
+        return Rzz(2 * tau) @ Rx1 @ Rx2
+
+    U0 = ideal_cycle_unitary()
+
+    # Ideal (error-free) final state = output-frame reference |chi> = U0^L |00>.
+    chi = _zero_state(n)
+    for _ in range(L):
+        chi = _apply_dense(chi, U0, n)
+
+    if noise is None:
+        # Forward evolution with signed coherent error on the ZZ generator each cycle.
+        state = _zero_state(n)
+        for ell in range(1, L + 1):
+            state = _apply_dense(state, U0, n)
+            err = _expm_anti(-1j * signs[ell - 1] * delta / 2 * ZZ)
+            state = _apply_dense(state, err, n)
+        final = state
+    else:
+        # Density-matrix path with a NoiseProfile.
+        rho = np.zeros((2**n, 2**n), dtype=complex)
+        rho[0, 0] = 1.0
+        for ell in range(1, L + 1):
+            rho = U0 @ rho @ U0.conj().T
+            err = _expm_anti(-1j * signs[ell - 1] * delta / 2 * ZZ)
+            rho = err @ rho @ err.conj().T
+            rho = apply_incoherent_layer(rho, noise, n, mode="dm", pairs_2q=[(1, 2)])
+        final = rho
+
+    # Propagate the error generator ZZ from each cycle to the output frame.
+    # After the error at cycle ell, the remaining ideal unitaries are U0^(L-ell).
+    gens = []
+    W = np.eye(2**n, dtype=complex)
+    for ell in range(L, 0, -1):
+        gens.append(propagate_generator(ZZ, W))
+        W = W @ U0                  # accumulate one more ideal cycle toward the output
+    gens.reverse()                  # order ell = 1..L
+    return final, chi, gens
+
+
+# ---------------------------------------------------------------------------
+# small dense helpers (n small only)
+# ---------------------------------------------------------------------------
+def _apply_dense(state, U, n):
+    return U @ state
+
+
+def _expm_anti(A):
+    """exp(A) for anti-Hermitian A via eigendecomposition of the Hermitian iA."""
+    w, V = np.linalg.eigh(1j * A)
+    return V @ np.diag(np.exp(-1j * w)) @ V.conj().T

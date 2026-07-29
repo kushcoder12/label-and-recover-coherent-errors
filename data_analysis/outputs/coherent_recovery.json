@@ -1,0 +1,127 @@
+{
+  "method": "C_H(P,L) = Cov_i(sigma_H(frame_i), O_i) over twirl instances i at fixed (target P, depth L). label = NET twirl-frame byproduct Pauli. Our theorem's coherent signature is GROWTH of |C| with depth (per-cycle accumulation).",
+  "n_multiple_comparisons": 135,
+  "outcome": "case3_structural_shallow_only_no_accumulation",
+  "our_signature_test": {
+    "definition": "weighted slope of |C(L)| vs L; positive => coherent accumulation with depth (per-cycle labels). Assessed against a frame-permutation null over all 135 (H,target) tests.",
+    "observed_max_growth_z": 2.4901749941803226,
+    "null_95pct_growth_z": 2.894783920798347,
+    "p_value": 0.18163672654690619,
+    "conclusion": "NO depth-growing coherent accumulation above the null."
+  },
+  "shallow_correlation": {
+    "definition": "|C| at the shallowest depth (L=2), max over 135 tests, vs frame-permutation null.",
+    "observed_max_z": 7.71390401968868,
+    "null_95pct_z": 3.8137364158721545,
+    "p_value": 0.001996007984031936,
+    "top": [
+      {
+        "H": "IZ",
+        "target": "ZZ",
+        "C_L2": 0.024608888888888875,
+        "z": 7.71390401968868,
+        "visibility": 0.99118115
+      },
+      {
+        "H": "IZ",
+        "target": "YZ",
+        "C_L2": 0.01914,
+        "z": 7.552223679490607,
+        "visibility": 0.9916969
+      },
+      {
+        "H": "IX",
+        "target": "YX",
+        "C_L2": 0.02295111111111109,
+        "z": 7.451918277366611,
+        "visibility": 0.989827
+      },
+      {
+        "H": "YI",
+        "target": "YY",
+        "C_L2": 0.023973333333333333,
+        "z": 7.341241678672547,
+        "visibility": 0.98973705
+      },
+      {
+        "H": "IX",
+        "target": "XX",
+        "C_L2": 0.017908888888888877,
+        "z": 7.146772632174481,
+        "visibility": 0.9920891
+      },
+      {
+        "H": "ZI",
+        "target": "ZY",
+        "C_L2": 0.022040000000000008,
+        "z": 6.922892454528172,
+        "visibility": 0.9898743
+      },
+      {
+        "H": "IZ",
+        "target": "XZ",
+        "C_L2": 0.01588666666666666,
+        "z": 6.479033277296076,
+        "visibility": 0.98687865
+      },
+      {
+        "H": "YI",
+        "target": "YX",
+        "C_L2": 0.021241111111111093,
+        "z": 6.473492035074153,
+        "visibility": 0.989827
+      }
+    ],
+    "interpretation": "A small (|C|~0.02) but statistically real label-outcome correlation exists at shallow depth; it DECAYS toward zero with depth (does not accumulate). Physically: the net frame is the PRODUCT of the per-cycle Paulis, so it decorrelates from any single cycle's coherent contribution as depth grows. Caveat: at shallow depth this correlation cannot be cleanly separated from readout-asymmetry (which also makes the sign-corrected survival frame-dependent) without per-layer labels."
+  },
+  "positive_control": {
+    "data": {
+      "0.0": {
+        "recovered": -0.002495219081303945,
+        "se": 0.0017752411969856263,
+        "per_depth_C": [
+          -0.006804444444444453,
+          0.0037033333333333363,
+          -0.007839999999999996,
+          0.0022999999999999926,
+          -0.004552222222222235,
+          0.005262222222222227,
+          -0.00970222222222222
+        ]
+      },
+      "0.02": {
+        "recovered": 0.017465982266476176,
+        "se": 0.0018085446382214577,
+        "per_depth_C": [
+          0.013106666666666683,
+          0.02368111111111112,
+          0.012137777777777792,
+          0.022300000000000007,
+          0.014358888888888893,
+          0.025173333333333346,
+          0.0102088888888889
+        ]
+      },
+      "0.05": {
+        "recovered": 0.04726236846583996,
+        "se": 0.0018837270392010439,
+        "per_depth_C": [
+          0.042973333333333356,
+          0.053647777777777794,
+          0.04210444444444448,
+          0.052300000000000034,
+          0.04272555555555563,
+          0.05504000000000003,
+          0.04007555555555556
+        ]
+      }
+    },
+    "interpretation": "Injecting a label-correlated shift theta_inj recovers C ~= theta_inj with the expected error -> the estimator is correct. A null on real data is therefore a property of the DATA/label, not a code bug."
+  },
+  "noise_floor": {
+    "median_deepest_depth_cov_se": 0.005231260032088947,
+    "randomizations_used": 60,
+    "note": "With C=60 randomizations the per-depth covariance floor is ~0.0052 (1 sigma). Resolving a depth-ACCUMULATING coherent covariance would require logging PER-LAYER twirl labels (not present here) and/or many more randomizations."
+  },
+  "verdict": "This real-hardware CB dataset exposes only the NET twirl frame. Our estimator (validated by the positive control and by the \u00a72 fidelity match) finds a genuine but shallow, NON-accumulating label-outcome correlation and NO depth-growing coherent signal. This is the STRUCTURAL outcome anticipated in the spec: the per-cycle coherent information our theorem shows is recoverable requires per-layer labels, motivating a purpose-built RC experiment that logs them."
+}

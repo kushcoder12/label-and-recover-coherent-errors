@@ -1,0 +1,44 @@
+# ---------------------------------------------------------------------------
+# Python / virtualenvs / build
+# ---------------------------------------------------------------------------
+.venv/
+.venv312/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# OS cruft
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Secrets / credentials — NEVER commit
+# ---------------------------------------------------------------------------
+.env
+*.env
+hardware/.env
+hardware/.env.*
+!hardware/.env.example
+
+# ---------------------------------------------------------------------------
+# Third-party datasets / circuits — NOT redistributed here.
+# See README ("External data & circuits") for the upstream sources.
+#   data/  -> Chen et al. IBM cycle-benchmarking dataset (Pauli_Learnability)
+#   qasm/  -> QASMBench circuits (Qiskit/benchpress)
+# ---------------------------------------------------------------------------
+data/
+qasm/
+data_analysis/cache/
+
+# ---------------------------------------------------------------------------
+# Project working notes / agent-workflow artifacts (not the scientific record)
+# ---------------------------------------------------------------------------
+CLAUDE.md
+HISTORY.md
+*.rtf

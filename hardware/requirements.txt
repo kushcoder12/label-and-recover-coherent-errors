@@ -1,0 +1,21 @@
+# hardware/ dependencies.
+#
+# OFFLINE dress rehearsal (python run_all.py) needs ONLY the project's existing stack:
+numpy>=1.21
+matplotlib>=3.4
+#
+# LIVE hardware run (submit.py / retrieve.py) additionally needs qiskit + the IBM runtime:
+#   pip install "qiskit>=1.2" "qiskit-ibm-runtime>=0.30"
+#
+# (qiskit is intentionally NOT imported anywhere in the offline path, so it is not required
+#  to run the dress rehearsal or the analysis.)
+#
+# IMPORTANT — TLS/OpenSSL for the live run (learned the hard way on macOS):
+#   The IBM Cloud endpoints reject the ancient LibreSSL 2.8.3 that ships with the macOS
+#   SYSTEM python (/usr/bin/python3) -> "TLSV1_ALERT_INTERNAL_ERROR". Use a Python built
+#   against OpenSSL 1.1.1+ / 3.x for submit.py & retrieve.py. Check with:
+#       python -c "import ssl; print(ssl.OPENSSL_VERSION)"
+#   If it says LibreSSL 2.x, use a Homebrew/pyenv/python.org 3.11+ interpreter instead, e.g.:
+#       python3.12 -m venv .venv312 && source .venv312/bin/activate
+#       pip install numpy matplotlib "qiskit>=1.2" "qiskit-ibm-runtime>=0.30"
+#   The OFFLINE dress rehearsal does no networking and works fine on any Python 3.9+.

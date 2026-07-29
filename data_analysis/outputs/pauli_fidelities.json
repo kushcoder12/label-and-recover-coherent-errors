@@ -1,0 +1,97 @@
+{
+  "description": "Pauli fidelities lambda_O extracted by multi-depth CB fit f_O(L)=A*lambda^L, compared to Chen et al. stored fidelities. These lambda are the visibilities v used for debiasing in the coherent estimator (\u00a73).",
+  "fit_vs_paper_max_abs_diff": 0.0003052714590029426,
+  "fit_vs_paper_rms_diff": 9.015516759478345e-05,
+  "pauli_fidelities": {
+    "IX": {
+      "lambda_fit": 0.9919999,
+      "lambda_se": 4.952868474385444e-05,
+      "lambda_paper": 0.9921233394485546,
+      "A_spam": 0.9538953844266564
+    },
+    "IY": {
+      "lambda_fit": 0.99110395,
+      "lambda_se": 5.9346456814211205e-05,
+      "lambda_paper": 0.9911367466946108,
+      "A_spam": 0.9548110578318149
+    },
+    "IZ": {
+      "lambda_fit": 0.9941076999999999,
+      "lambda_se": 3.744387901002326e-05,
+      "lambda_paper": 0.9940761038341286,
+      "A_spam": 0.957066528892159
+    },
+    "XI": {
+      "lambda_fit": 0.9926599,
+      "lambda_se": 6.393362834447375e-05,
+      "lambda_paper": 0.992965171459003,
+      "A_spam": 0.9629478679917395
+    },
+    "XX": {
+      "lambda_fit": 0.9920891,
+      "lambda_se": 9.532136426070046e-05,
+      "lambda_paper": 0.9920890953629186,
+      "A_spam": 0.9259999378874904
+    },
+    "XY": {
+      "lambda_fit": 0.9911175999999999,
+      "lambda_se": 9.865490370930836e-05,
+      "lambda_paper": 0.9911175993856058,
+      "A_spam": 0.924096363695585
+    },
+    "XZ": {
+      "lambda_fit": 0.98687865,
+      "lambda_se": 0.00019347862126743213,
+      "lambda_paper": 0.9868786506062098,
+      "A_spam": 0.9197616113957939
+    },
+    "YI": {
+      "lambda_fit": 0.9917819,
+      "lambda_se": 4.964339222194071e-05,
+      "lambda_paper": 0.9918595665615083,
+      "A_spam": 0.9519493863355126
+    },
+    "YX": {
+      "lambda_fit": 0.989827,
+      "lambda_se": 0.0001172420906153228,
+      "lambda_paper": 0.9898270103685046,
+      "A_spam": 0.9216803021701868
+    },
+    "YY": {
+      "lambda_fit": 0.98973705,
+      "lambda_se": 0.00011745439158827917,
+      "lambda_paper": 0.9897370573301879,
+      "A_spam": 0.9193365286554976
+    },
+    "YZ": {
+      "lambda_fit": 0.9916969,
+      "lambda_se": 9.766606626929617e-05,
+      "lambda_paper": 0.9916968832106388,
+      "A_spam": 0.9169866076540711
+    },
+    "ZI": {
+      "lambda_fit": 0.9911624,
+      "lambda_se": 6.299921489673512e-05,
+      "lambda_paper": 0.9912357847082206,
+      "A_spam": 0.9515635031343181
+    },
+    "ZX": {
+      "lambda_fit": 0.9899204,
+      "lambda_se": 9.137952137424425e-05,
+      "lambda_paper": 0.989920393376955,
+      "A_spam": 0.9209047366834425
+    },
+    "ZY": {
+      "lambda_fit": 0.9898743,
+      "lambda_se": 0.00011349523581180342,
+      "lambda_paper": 0.9898743193488486,
+      "A_spam": 0.9171529383264938
+    },
+    "ZZ": {
+      "lambda_fit": 0.99118115,
+      "lambda_se": 0.00013893134391889208,
+      "lambda_paper": 0.9911811258443718,
+      "A_spam": 0.9163665424791543
+    }
+  }
+}

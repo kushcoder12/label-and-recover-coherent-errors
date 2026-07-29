@@ -1,0 +1,11 @@
+# Credentials — NEVER commit
+.env
+
+# Generated data / results (raw JSONs, job ids, manifests, analysis)
+data/*.json
+online_data/*.json
+
+# Python
+__pycache__/
+*.pyc
+.DS_Store

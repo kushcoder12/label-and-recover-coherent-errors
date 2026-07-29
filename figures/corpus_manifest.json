@@ -1,0 +1,122 @@
+[
+  {
+    "name": "QFT",
+    "source": "qft_n4",
+    "n": 4,
+    "depth": 12,
+    "two_qubit_gates": 6,
+    "n_active_errors": 3,
+    "max_bias": 2.0096577929562542e-08,
+    "shot_floor": 0.011909771086820313
+  },
+  {
+    "name": "Adder",
+    "source": "adder_n4",
+    "n": 4,
+    "depth": 23,
+    "two_qubit_gates": 10,
+    "n_active_errors": 3,
+    "max_bias": 2.0096587532991705e-08,
+    "shot_floor": 0.011946465031686207
+  },
+  {
+    "name": "QAOA",
+    "source": "qaoa_n6",
+    "n": 6,
+    "depth": 270,
+    "two_qubit_gates": 54,
+    "n_active_errors": 5,
+    "max_bias": 2.009655668266941e-08,
+    "shot_floor": 0.012493355450475835
+  },
+  {
+    "name": "VQE-UCCSD",
+    "source": "vqe_uccsd_n6",
+    "n": 6,
+    "depth": 2282,
+    "two_qubit_gates": 1052,
+    "n_active_errors": 5,
+    "max_bias": 2.009655743206995e-08,
+    "shot_floor": 0.012678581947298954
+  },
+  {
+    "name": "GHZ/cat",
+    "source": "cat_state_n4",
+    "n": 4,
+    "depth": 4,
+    "two_qubit_gates": 3,
+    "n_active_errors": 3,
+    "max_bias": 2.009655857004855e-08,
+    "shot_floor": 0.011892088953735135
+  },
+  {
+    "name": "Trotter",
+    "source": "basis_trotter_n4",
+    "n": 4,
+    "depth": 1506,
+    "two_qubit_gates": 462,
+    "n_active_errors": 3,
+    "max_bias": 1.672244748229801e-08,
+    "shot_floor": 0.011768433146273984
+  },
+  {
+    "name": "Simon",
+    "source": "simon_n6",
+    "n": 6,
+    "depth": 16,
+    "two_qubit_gates": 4,
+    "n_active_errors": 5,
+    "max_bias": 2.0096558556170763e-08,
+    "shot_floor": 0.012431095830636833
+  },
+  {
+    "name": "Grover",
+    "source": "grover_n2",
+    "n": 2,
+    "depth": 16,
+    "two_qubit_gates": 2,
+    "n_active_errors": 2,
+    "max_bias": 2.0096558528415187e-08,
+    "shot_floor": 0.011784407920827425
+  },
+  {
+    "name": "Teleport",
+    "source": "teleportation_n3",
+    "n": 3,
+    "depth": 8,
+    "two_qubit_gates": 2,
+    "n_active_errors": 3,
+    "max_bias": 2.0096558528415187e-08,
+    "shot_floor": 0.016624231717932904
+  },
+  {
+    "name": "HW-eff",
+    "source": "variational_n4",
+    "n": 4,
+    "depth": 54,
+    "two_qubit_gates": 16,
+    "n_active_errors": 5,
+    "max_bias": 2.0096558611681914e-08,
+    "shot_floor": 0.012093580089239294
+  },
+  {
+    "name": "Deutsch",
+    "source": "deutsch_n2",
+    "n": 2,
+    "depth": 5,
+    "two_qubit_gates": 1,
+    "n_active_errors": 2,
+    "max_bias": 2.0096558597804126e-08,
+    "shot_floor": 0.011658404085092153
+  },
+  {
+    "name": "RandClifford",
+    "source": "native",
+    "n": 4,
+    "depth": 20,
+    "two_qubit_gates": 12,
+    "n_active_errors": 3,
+    "max_bias": 1.672244727413119e-08,
+    "shot_floor": 0.011734372099212326
+  }
+]

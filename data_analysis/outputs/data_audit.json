@@ -1,0 +1,534 @@
+{
+  "dataset": {
+    "source": "Chen et al., Nat. Commun. 2023 (ibmq_montreal, 2 target qubits)",
+    "file_full": "ibmq_experiment_all_20220323_8530634712_full",
+    "top_level_keys": [
+      "token",
+      "cb",
+      "int_cb",
+      "intc_cb"
+    ],
+    "cb_targets": [
+      "XX",
+      "XY",
+      "XZ",
+      "YX",
+      "YY",
+      "YZ",
+      "ZX",
+      "ZY",
+      "ZZ"
+    ]
+  },
+  "cb": {
+    "XX": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "XX"
+    },
+    "XY": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "XY"
+    },
+    "XZ": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "XZ"
+    },
+    "YX": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "YX"
+    },
+    "YY": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "YY"
+    },
+    "YZ": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "YZ"
+    },
+    "ZX": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "ZX"
+    },
+    "ZY": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "ZY"
+    },
+    "ZZ": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "ZZ"
+    }
+  },
+  "int_cb": {
+    "XX": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "XX"
+    },
+    "XY": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "XY"
+    },
+    "XZ": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "XZ"
+    },
+    "YX": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "YX"
+    },
+    "YY": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "YY"
+    },
+    "YZ": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "YZ"
+    },
+    "ZX": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "ZX"
+    },
+    "ZY": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "ZY"
+    },
+    "ZZ": {
+      "Lrange": [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+      ],
+      "C_randomizations": 60,
+      "shots_per_circuit": 1000,
+      "n_circuits": 420,
+      "circuits_per_depth": {
+        "2": 60,
+        "4": 60,
+        "8": 60,
+        "16": 60,
+        "32": 60,
+        "64": 60,
+        "128": 60
+      },
+      "has_shot_memory": true,
+      "target_pauli": "ZZ"
+    }
+  },
+  "label_definition": {
+    "what_clifford_encodes": "NET twirl frame (single 2-qubit Clifford tableau: 2 stabilizer generators [Z-type, signed] + 2 destabilizer generators [X-type, signed]). NOT the per-layer random Paulis.",
+    "per_layer_paulis_recoverable": false,
+    "reason": "The per-layer random Paulis live inside the qiskit QuantumCircuit object, which deserializes to an opaque stub under numpy-only SafeUnpickler (qiskit not installed). Only the net frame survives.",
+    "label_used": "readout signs (s0, s1) from the destabilizer generators, and the net Pauli byproduct frame decoded from stabilizer+destabilizer signs."
+  },
+  "frame_prediction_check": {
+    "description": "Fraction of shallowest-depth circuits whose most-probable outcome equals the destabilizer-frame-predicted ideal bitstring. ~1 confirms the label extraction and big-endian bit mapping are correct.",
+    "per_target": {
+      "XX": {
+        "depth": 2,
+        "n": 60,
+        "frac_argmax_matches_frame": 1.0
+      },
+      "XY": {
+        "depth": 2,
+        "n": 60,
+        "frac_argmax_matches_frame": 1.0
+      },
+      "XZ": {
+        "depth": 2,
+        "n": 60,
+        "frac_argmax_matches_frame": 1.0
+      },
+      "YX": {
+        "depth": 2,
+        "n": 60,
+        "frac_argmax_matches_frame": 1.0
+      },
+      "YY": {
+        "depth": 2,
+        "n": 60,
+        "frac_argmax_matches_frame": 1.0
+      },
+      "YZ": {
+        "depth": 2,
+        "n": 60,
+        "frac_argmax_matches_frame": 1.0
+      },
+      "ZX": {
+        "depth": 2,
+        "n": 60,
+        "frac_argmax_matches_frame": 1.0
+      },
+      "ZY": {
+        "depth": 2,
+        "n": 60,
+        "frac_argmax_matches_frame": 1.0
+      },
+      "ZZ": {
+        "depth": 2,
+        "n": 60,
+        "frac_argmax_matches_frame": 1.0
+      }
+    },
+    "mean_frac": 1.0
+  }
+}
