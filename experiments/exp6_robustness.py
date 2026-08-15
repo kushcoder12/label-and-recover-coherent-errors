@@ -1,5 +1,5 @@
 """Experiment 6 / Figure 6 — Robustness of labeled coherent-error recovery under the
-full standard noise profile (NOISE_MODULE.md §7).
+full standard noise profile.
 
 Single-qubit calibration model (core.estimator): prepare |+>, coherent Z-error
 Rz(theta*), one incoherent noise layer (amplitude damping / dephasing / depolarizing),
@@ -22,7 +22,7 @@ Three truths this figure establishes (all computed EXACTLY from the model, no MC
     biased by exactly the readout offset (e10 - e01). This is the sorting: coherent
     signal -> label-correlated (recovered); additive background -> marginal (discarded).
 
-Device anchor (NOISE_MODULE.md §8, Heron-class): 1q gate ~30 ns, T1,T2 ~ 100-300 us,
+Device anchor (Heron-class): 1q gate ~30 ns, T1,T2 ~ 100-300 us,
 so per-gate dt/T2 ~ 3e-4 (essentially clean); the sweeps below stress-test AROUND
 this out to elevated noise. Model functions are import-safe; tests import them.
 """

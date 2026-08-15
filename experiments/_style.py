@@ -1,4 +1,4 @@
-"""Shared publication-quality figure style (CLAUDE.md §6).
+"""Shared publication-quality figure style.
 
 PRX/PRL conventions: vector PDF + 300-dpi PNG, font >= 11, labelled axes with
 units, legend, no chartjunk, colorblind-safe palette (Okabe-Ito).

@@ -1,10 +1,10 @@
-"""hardware/local_sim.py — offline noisy statevector/DM simulator for the dress rehearsal.
+"""Offline noisy statevector/DM simulator standing in for the real device.
 
-IBM_HARDWARE_SPEC.md §6: before spending any QPU time, run the WHOLE pipeline on a local
-noisy statevector sim (reuse core + noise) and confirm it recovers theta*. This module IS
-that simulator. It stands in for the real device: given a CircuitSpec it returns counts in
-exactly the raw-data schema (§3), so submit->retrieve->analyze can be exercised end to end
-with no qiskit and no network.
+Before spending QPU time, this runs the whole pipeline on a local noisy
+statevector sim (reuse core + noise) and confirms it recovers theta*. Given a
+CircuitSpec it returns counts in the same raw-data schema as the real device,
+so submit -> retrieve -> analyze can be exercised end to end with no qiskit
+and no network.
 
 Reuses the project engine (numpy only): core.single_qubit_gates, core.operator_on_state,
 core.noise (NoiseProfile, apply_incoherent_layer, apply_readout).
@@ -15,10 +15,9 @@ Physics of the model (why it mirrors the device):
     which shrinks the coherence -> the visibility v < 1. Then the SDG,H basis change maps Y
     onto Z, and readout error (e01,e10) further biases the two populations.
   - RZ is virtual on IBM (~zero duration), so depth L adds little decoherence; we model a
-    small residual per-cycle idle so v(L) drifts gently with depth (the T2 "ceiling"),
-    exactly as the spec anticipates for Fig R2.
-The device's T2/readout only SHRINK the label-outcome correlation (visibility v); debiasing
-by the measured v(L) recovers theta* (Theorem 2D / §4). This is the dress rehearsal.
+    small residual per-cycle idle so v(L) drifts gently with depth (the T2 "ceiling").
+The device's T2/readout only shrink the label-outcome correlation (visibility v); debiasing
+by the measured v(L) recovers theta*. This is the dress rehearsal.
 """
 
 import os
@@ -94,7 +93,7 @@ def simulate_counts(spec, shots, profile=None, rng=None):
 
 
 def calib_snapshot(profile, qubit=0):
-    """Per-qubit calibration snapshot in the schema of §3 (offline surrogate for
+    """Per-qubit calibration snapshot in the raw-data schema (offline surrogate for
     backend.properties())."""
     return {
         "T1": profile.T1, "T2": profile.T2,
@@ -105,7 +104,7 @@ def calib_snapshot(profile, qubit=0):
 
 
 def run_offline(specs, shots=None, seed=None, save_bitstrings=None):
-    """Execute all specs on the local simulator -> list of raw records (schema §3).
+    """Execute all specs on the local simulator -> list of raw records.
 
     This is exactly what retrieve.py writes after a live run, so analyze.py is agnostic to
     whether the data came from the device or from here.

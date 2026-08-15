@@ -1,4 +1,4 @@
-"""GAP 4 verification (GAPS_CODE.md): corpus generality.
+"""Corpus generality verification.
 
 - The native QASM loader parses bundled QASMBench circuits into unitary circuits.
 - Noiseless smoke test: exact coherent-error recovery on several circuit families.

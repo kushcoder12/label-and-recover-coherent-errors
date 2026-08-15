@@ -61,13 +61,13 @@ def PSWAP_gate(theta):
 
 
 # ---------------------------------------------------------------------------
-# Two-qubit rotations / phase gates for the RC-label study (CLAUDE.md §2.5, §4).
+# Two-qubit rotations / phase gates for the RC-label study.
 # Basis order is big-endian |q1 q2>: {|00>, |01>, |10>, |11>} = indices 0..3,
 # matching operator_on_state.two_qubit_op.
 # ---------------------------------------------------------------------------
 
 def Rzz(theta):
-    """Rzz(theta) = exp(-i theta (Z x Z) / 2)  (CLAUDE.md §2.5).
+    """Rzz(theta) = exp(-i theta (Z x Z) / 2).
 
     Z x Z = diag(1, -1, -1, 1), so
     Rzz = diag(e^{-i theta/2}, e^{+i theta/2}, e^{+i theta/2}, e^{-i theta/2}).
@@ -80,16 +80,16 @@ def Rzz(theta):
 
 
 def CZ(theta=None):
-    """Controlled-Z = diag(1, 1, 1, -1) (CLAUDE.md §4).
+    """Controlled-Z = diag(1, 1, 1, -1).
 
-    Alias of CZ_gate() under the spec name. `theta` is accepted and ignored so
+    Alias of CZ_gate() under the standard name. `theta` is accepted and ignored so
     callers can use CZ() uniformly; use CPhase(theta) for a tunable phase.
     """
     return CZ_gate()
 
 
 def CPhase(theta):
-    """Controlled-phase gate CPhase(theta) = diag(1, 1, 1, e^{i theta}) (CLAUDE.md §4).
+    """Controlled-phase gate CPhase(theta) = diag(1, 1, 1, e^{i theta}).
 
     CZ is the special case theta = pi.
     """

@@ -1,15 +1,15 @@
-"""Fisher-information utilities — the core science primitives (CLAUDE.md §2.4, §4).
+"""Fisher-information utilities — the core science primitives.
 
 Classical Fisher information of measurement distributions and quantum Fisher
 information (QFI) of pure states, computed two independent ways (fidelity and
-generator variance) so they can be cross-checked (mandatory, CLAUDE.md §8).
+generator variance) so they can be cross-checked against each other.
 """
 
 import numpy as np
 
 
 def binary_fisher(mean, dmean):
-    """Fisher information of a binary (+/-1) outcome with mean m(theta) (E3, CLAUDE.md §2.2).
+    """Fisher information of a binary (+/-1) outcome with mean m(theta) (E3).
 
     F = (d m / d theta)^2 / (1 - m^2).
 
@@ -31,7 +31,7 @@ def binary_fisher(mean, dmean):
 def fisher_from_hist(prob_fn, theta, eps=1e-5):
     """Classical Fisher information of a discrete distribution by finite difference.
 
-    F = sum_b (d p_b / d theta)^2 / p_b  (CLAUDE.md §4).
+    F = sum_b (d p_b / d theta)^2 / p_b.
 
     prob_fn(theta) -> 1-D numpy array of outcome probabilities (sums to 1).
     Central difference for the derivative; probabilities evaluated at `theta`.
@@ -46,7 +46,7 @@ def fisher_from_hist(prob_fn, theta, eps=1e-5):
 
 
 def qfi_fidelity(state_fn, theta, eps=1e-4):
-    """QFI via the finite-difference fidelity, Method A (CLAUDE.md §2.4).
+    """QFI via the finite-difference fidelity, Method A.
 
     F_Q ~= 8 (1 - |<psi(theta)|psi(theta+eps)>|) / eps^2.
 
@@ -59,7 +59,7 @@ def qfi_fidelity(state_fn, theta, eps=1e-4):
 
 
 def qfi_variance(chi_state, generator):
-    """QFI via generator variance, Method B (CLAUDE.md §2.4).
+    """QFI via generator variance, Method B.
 
     F_Q = 4 Var_{|chi>}(G) = 4 (<G^2> - <G>^2),  G = generator (dense operator).
 
@@ -73,7 +73,7 @@ def qfi_variance(chi_state, generator):
 
 
 def qfi_mixed(rho_fn, theta, eps=1e-5, tol=1e-12):
-    """Quantum Fisher information of a MIXED state via the SLD formula (CLAUDE.md §2.4 ext).
+    """Quantum Fisher information of a mixed state via the SLD formula.
 
     F_Q(rho) = 2 sum_{j,k : lam_j+lam_k>0} |<j|drho/dtheta|k>|^2 / (lam_j + lam_k),
 
@@ -103,7 +103,7 @@ def decompose_joint_fisher(joint_fn, theta, eps=1e-6):
     joint_fn(theta) -> 2-D numpy array P[b, s] (nonnegative, sums to 1), where the
     first axis indexes the measurement outcome b and the second the twirl label s.
 
-    Returns (F_joint, F_marg, E_b_cond) with, per the Fisher chain rule (R1, §2.2):
+    Returns (F_joint, F_marg, E_b_cond) with, per the Fisher chain rule (R1):
 
         F_joint = sum_{b,s} (dP_{bs})^2 / P_{bs}
         F_marg  = sum_b     (dP_b)^2   / P_b        [marginal over labels: P_b = sum_s P_{bs}]
@@ -136,7 +136,7 @@ def decompose_joint_fisher(joint_fn, theta, eps=1e-6):
 
 
 def chain_rule_check(F_joint, F_marg, F_cond_term, tol=1e-9):
-    """Assert the Fisher chain rule F_joint = F_marg + F_cond_term (R1, CLAUDE.md §2.2).
+    """Assert the Fisher chain rule F_joint = F_marg + F_cond_term (R1).
 
     Returns the residual |F_joint - (F_marg + F_cond_term)| and raises if > tol.
     """

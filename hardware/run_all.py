@@ -1,6 +1,6 @@
-"""hardware/run_all.py — one entry point for the whole pipeline.
+"""One entry point for the whole pipeline.
 
-Default (offline dress rehearsal, §6): build specs -> simulate on the local noisy
+Default (offline dress rehearsal): build specs -> simulate on the local noisy
 statevector sim (reuse core + noise) -> write raw data -> analyze -> figures. Proves the
 pipeline recovers theta* BEFORE any QPU time is spent. No qiskit, no network.
 
@@ -30,7 +30,7 @@ def run_offline():
     specs = bc.generate_all_specs()
     bad = [s.cid for s in specs if not bc.spec_integrity_ok(s)]
     if bad:
-        raise SystemExit(f"spec-integrity failures (§2.3 analog): {bad[:5]} ...")
+        raise SystemExit(f"spec-integrity failures: {bad[:5]} ...")
     print(f"built {len(specs)} circuits "
           f"({config.total_signal_circuits()} signal + {config.total_viscal_circuits()} viscal); "
           f"integrity OK.")
@@ -46,8 +46,8 @@ def run_offline():
 
 
 def _positive_control(analysis):
-    """§6 guardrails: theta*=0 null must recover ~0; theta_hat must track theta* (diagonal)."""
-    print("\n=== POSITIVE-CONTROL CHECKS (§6) ===")
+    """Guardrails: theta*=0 null must recover ~0; theta_hat must track theta* (diagonal)."""
+    print("\n=== POSITIVE-CONTROL CHECKS ===")
     ok = True
     # null control at every depth: theta_hat must be within the physically-negligible
     # NULL_TOL band. We ALSO report per-point 95%-CI containment for information, noting

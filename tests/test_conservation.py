@@ -1,4 +1,4 @@
-"""Phase 3 verification (CLAUDE.md §5, Oracle O1).
+"""Oracle O1 verification.
 
 Reproduce the single-qubit conservation decomposition to 1e-6, both from the
 numeric simulation and the analytic model, and confirm the conservation law

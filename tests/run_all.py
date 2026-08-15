@@ -18,11 +18,11 @@ MODULES = [
     "test_noisy_saturation",
     "test_two_qubit_tfim",
     "test_estimator",
-    "test_noise",             # NOISE_MODULE.md oracles N1-N6
-    "test_noise_estimation",  # NOISE_MODULE.md robustness / unbiasedness
-    "test_error_map",         # GAPS_CODE.md GAP 3 (coherent-error map recovery)
-    "test_corpus",            # GAPS_CODE.md GAP 4 (corpus generality)
-    "test_shotcost",          # GAPS_CODE.md GAP 5 (shot-cost vs RPE)
+    "test_noise",             # noise-module oracles N1-N6
+    "test_noise_estimation",  # noise robustness / unbiasedness
+    "test_error_map",         # coherent-error map recovery
+    "test_corpus",            # corpus generality
+    "test_shotcost",          # shot-cost vs RPE
 ]
 
 

@@ -1,8 +1,8 @@
-"""hardware/build_circuits.py — owned-label circuit specifications (IBM_HARDWARE_SPEC.md §1).
+"""Owned-label circuit specifications.
 
-THE POINT (spec preamble): we generate ONE circuit per twirl instance and record the
-exact per-cycle sign vector s = (s_1..s_L) ourselves, so every per-layer label is OWNED
-and never lost. The public CB dataset kept only the NET frame; this fixes that.
+We generate ONE circuit per twirl instance and record the exact per-cycle
+sign vector s = (s_1..s_L) ourselves, so every per-layer label is owned and
+never lost. The public CB dataset kept only the net frame; this fixes that.
 
 Variant A per-shot circuit for (depth L, sign vector s, injected theta*):
     1. H                       -> |+>  (Bloch +x)
@@ -12,9 +12,9 @@ Variant A per-shot circuit for (depth L, sign vector s, injected theta*):
 
 Ideal (noiseless) statistics: <Y> = sin(theta* * sum_l s_l).
 
-This module is PURE PYTHON / numpy (no qiskit) so it runs in the offline sandbox. The
-qiskit QuantumCircuit builder and the transpiler-integrity assert (§2.3) live here too but
-import qiskit LAZILY, so they only require qiskit when actually building for hardware.
+This module is pure Python / numpy (no qiskit) so it runs in the offline sandbox. The
+qiskit QuantumCircuit builder and the transpiler-integrity assert live here too but
+import qiskit lazily, so they only require qiskit when actually building for hardware.
 """
 
 import math
@@ -86,7 +86,7 @@ def generate_viscal_specs(depths=None, repeats=None, seed=None):
     """Per-depth visibility references (net phase pi/2 spread over L layers).
 
     Same L layers -> same accumulated decoherence as the signal circuits at that depth,
-    so the measured <Y> directly estimates the visibility v(L) used to debias (§4).
+    so the measured <Y> directly estimates the visibility v(L) used to debias.
     """
     depths = config.DEPTHS if depths is None else depths
     repeats = config.VISCAL_REPEATS if repeats is None else repeats
@@ -111,7 +111,7 @@ def generate_all_specs():
 
 
 def spec_integrity_ok(spec):
-    """Spec-level analog of the transpiler-integrity assert (§2.3): confirm the spec still
+    """Spec-level analog of the transpiler-integrity assert: confirm the spec still
     carries exactly L injected phase layers with the intended per-layer angles.
 
     This is the numpy-only guard used by the offline dress rehearsal. The qiskit-level
@@ -134,7 +134,7 @@ def spec_integrity_ok(spec):
 def build_qiskit_circuit(spec):
     """Return a 1-qubit, 1-clbit qiskit QuantumCircuit implementing `spec`.
 
-    barrier() is placed around EVERY injected-RZ and the prep/probe (§2.3) so that
+    barrier() is placed around EVERY injected-RZ and the prep/probe so that
     optimization_level=0 cannot merge or drop the injected phase layers.
     """
     from qiskit import QuantumCircuit   # lazy: not needed offline
@@ -153,7 +153,7 @@ def build_qiskit_circuit(spec):
 
 
 def assert_injected_layers_intact(transpiled_qc, spec, atol=1e-9):
-    """§2.3 (#1 failure mode): confirm the transpiled circuit STILL has L injected phase
+    """Confirm the transpiled circuit still has L injected phase
     layers. Raises AssertionError if the transpiler merged/removed them.
 
     Strategy: at optimization_level=0 with per-layer barriers, each injected rz(s_l*theta*)
@@ -170,7 +170,7 @@ def assert_injected_layers_intact(transpiled_qc, spec, atol=1e-9):
         raise AssertionError(
             f"[{spec.cid}] transpiler-integrity FAIL: {n_barriers} barriers, "
             f"expected {expected_barriers} (L={spec.L}+2). The transpiler restructured "
-            f"the circuit; run is INVALID (§2.3)."
+            f"the circuit; run is INVALID."
         )
 
     if spec.kind == "signal" and abs(spec.theta_star) > atol:
@@ -188,7 +188,7 @@ def assert_injected_layers_intact(transpiled_qc, spec, atol=1e-9):
             raise AssertionError(
                 f"[{spec.cid}] transpiler-integrity FAIL: found {n_injected_rz} injected "
                 f"rz layers, expected {spec.L}. Injected phases were merged/removed; run "
-                f"is INVALID (§2.3)."
+                f"is INVALID."
             )
     return True
 

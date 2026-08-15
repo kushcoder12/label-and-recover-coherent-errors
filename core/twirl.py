@@ -1,10 +1,10 @@
-"""Randomized-compiling twirl for the sign-label model (CLAUDE.md §2.2, §4).
+"""Randomized-compiling twirl for the sign-label model.
 
 The twirl is a per-shot sign label s in {+1, -1} on a coherent Z-error: an
 X-dressing flips the error sign, since X exp(-i theta Z/2) X = exp(+i theta Z/2).
 
-CRITICAL INVARIANT: labels are RETAINED and returned to the caller. This module
-NEVER averages over the labels internally. Marginalization (standard RC) happens
+Critical invariant: labels are retained and returned to the caller. This module
+never averages over the labels internally. Marginalization (standard RC) happens
 only where the marginal quantity is explicitly wanted, in the caller.
 """
 
@@ -15,7 +15,7 @@ from .operator_on_state import single_qubit_op
 
 
 def sample_sign_pattern(L, p, rng=None):
-    """Draw a length-L sign pattern s_ell in {+1,-1} with P(+1)=p (CLAUDE.md §4).
+    """Draw a length-L sign pattern s_ell in {+1,-1} with P(+1)=p.
 
     Returns the labels (an integer numpy array of +/-1). The mean sign is
     mu = 2p - 1; p=0.5 is the fully-twirled (mu=0) limit, p=1 is no twirl.
@@ -29,7 +29,7 @@ def sample_sign_pattern(L, p, rng=None):
 def all_sign_patterns(L):
     """Enumerate all 2^L sign patterns as a (2^L, L) array of +/-1.
 
-    Used for EXACT averages at small L (CLAUDE.md §8: enumerate for L <= ~12).
+    Used for exact averages at small L (enumerate for L <= ~12).
     """
     idx = np.arange(2**L)
     bits = ((idx[:, None] >> np.arange(L)[::-1]) & 1)

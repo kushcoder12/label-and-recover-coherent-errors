@@ -1,6 +1,6 @@
 """Experiment 4 / Figure 4 — Two-qubit TFIM: conservation + silent kernel.
 
-TFIM Trotter model (CLAUDE.md §2.5): H = Z1 Z2 + g (X1 + X2), cycle
+TFIM Trotter model: H = Z1 Z2 + g (X1 + X2), cycle
   U0 = exp(-i tau Z1 Z2) exp(-i tau g X1) exp(-i tau g X2) = Rzz(2 tau) Rx1(2 tau g) Rx2(2 tau g),
 with a twirled coherent over-rotation exp(-i s_ell delta Z1 Z2 / 2) each cycle.
 

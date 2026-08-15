@@ -1,4 +1,4 @@
-"""Phase 5 sanity checks (CLAUDE.md §5; no exact oracle).
+"""Noisy-saturation sanity checks (no exact oracle).
 
 - gamma_z=0 recovers Oracle O2 labeled (sum sin^2(ell*alpha)) to machine precision.
 - Saturation depth L*(T2) increases (weakly monotone) as gamma_z decreases (T2 grows).

@@ -1,13 +1,13 @@
-"""core/noise.py — device-representative noise profile (NOISE_MODULE.md).
+"""Device-representative noise profile.
 
 A single dataclass `NoiseProfile` parametrizes the full standard channel set, and
 helper functions build the Kraus operators and apply them either exactly
 (density-matrix mode, small n) or by sampling (trajectory mode, larger n).
 
-Conceptual anchor (NOISE_MODULE.md): RC's per-shot twirl SORTS errors -- coherent
+Conceptual anchor: RC's per-shot twirl sorts errors -- coherent
 (Hamiltonian) errors become label-correlated (recoverable from labels), while
 stochastic Pauli errors are label-independent (they sit in the marginal). This
-module supplies BOTH sectors: coherent errors are injected as unitaries in the
+module supplies both sectors: coherent errors are injected as unitaries in the
 circuit builders (circuits.py), incoherent Pauli/damping/readout errors live here.
 
 Built on the existing Kraus machinery in core/quantum_errors.py (numpy only).
@@ -39,7 +39,7 @@ _Z = np.array([[1, 0], [0, -1]], dtype=complex)
 # ===========================================================================
 @dataclass
 class NoiseProfile:
-    """Per-layer physical noise parameters (NOISE_MODULE.md §3).
+    """Per-layer physical noise parameters.
 
     dt     : layer duration (same time units as T1, T2).
     T1     : relaxation time (inf = off).
@@ -80,10 +80,10 @@ class NoiseProfile:
 
 
 # ===========================================================================
-# Kraus builders (NOISE_MODULE.md §2)
+# Kraus builders
 # ===========================================================================
 def amplitude_damping_kraus(profile):
-    """T1 amplitude damping, p1 = 1 - exp(-dt/T1)  (NOISE_MODULE.md §2.1).
+    """T1 amplitude damping, p1 = 1 - exp(-dt/T1).
 
     Returns [I, 0]-equivalent (no-op) when T1 is infinite.
     """
@@ -93,7 +93,7 @@ def amplitude_damping_kraus(profile):
 
 
 def dephasing_kraus(profile):
-    """Pure dephasing (phase-flip form) from T1, T2  (NOISE_MODULE.md §2.2).
+    """Pure dephasing (phase-flip form) from T1, T2.
 
     1/Tphi = 1/T2 - 1/(2 T1)  (require T2 <= 2 T1);  lam = (1 - exp(-dt/Tphi))/2.
     K0 = sqrt(1-lam) I,  K1 = sqrt(lam) Z.  Coherence factor (1-2 lam) = exp(-dt/Tphi),
@@ -127,17 +127,17 @@ def _depol_strength_2q(r):
 
 
 def depolarizing_kraus_1q(profile):
-    """Single-qubit depolarizing Kraus set calibrated to profile.r_1q (NOISE_MODULE.md §2.3)."""
+    """Single-qubit depolarizing Kraus set calibrated to profile.r_1q."""
     return kraus_depolarizing(_depol_strength_1q(profile.r_1q))
 
 
 def depolarizing_kraus_2q(profile):
-    """Two-qubit depolarizing Kraus set calibrated to profile.r_2q (NOISE_MODULE.md §2.3)."""
+    """Two-qubit depolarizing Kraus set calibrated to profile.r_2q."""
     return kraus_two_qubit_depolarizing(_depol_strength_2q(profile.r_2q))
 
 
 def readout_confusion(profile):
-    """Asymmetric readout confusion matrix R (NOISE_MODULE.md §2.5).
+    """Asymmetric readout confusion matrix R.
 
     Columns = true state, rows = measured state:
         R = [[1 - e01,   e10  ],
@@ -170,7 +170,7 @@ def is_trace_preserving(kraus_list, tol=1e-12):
 
 
 # ===========================================================================
-# Applying the incoherent layer (NOISE_MODULE.md §4)
+# Applying the incoherent layer
 # ===========================================================================
 def _nontrivial(kraus_list):
     """True if the Kraus set is not the identity channel (worth applying)."""
@@ -183,7 +183,7 @@ def _nontrivial(kraus_list):
 
 
 def apply_incoherent_layer(rho_or_state, profile, n, mode="dm", pairs_2q=(), rng=None):
-    """Apply one incoherent noise layer (NOISE_MODULE.md §4, §5).
+    """Apply one incoherent noise layer.
 
     Per qubit, in composition order depolarizing -> dephasing -> amplitude damping.
     Two-qubit depolarizing is applied on each pair in `pairs_2q` (1-indexed tuples).
@@ -264,10 +264,10 @@ def _embed_two_qubit_op(op4, q1, q2, n):
 
 
 # ===========================================================================
-# Readout (NOISE_MODULE.md §2.5)
+# Readout
 # ===========================================================================
 def apply_readout(probs_or_bits, profile, mode="probs", rng=None):
-    """Apply asymmetric single-qubit readout error (NOISE_MODULE.md §2.5).
+    """Apply asymmetric single-qubit readout error.
 
     mode="probs": probs_or_bits is a length-2 array [P(0), P(1)] (true); returns
                   measured [P(0), P(1)] = R @ P_true.

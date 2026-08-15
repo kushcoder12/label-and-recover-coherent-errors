@@ -1,6 +1,6 @@
-"""Experiment 9 / Figure 9 — Corpus generality (GAPS_CODE.md GAP 4).
+"""Experiment 9 / Figure 9 — Corpus generality.
 
-The labeled-RC coherent-error recovery of GAP 3 is run across a curated corpus of
+The labeled-RC coherent-error recovery (core.error_map) is run across a curated corpus of
 standard circuit families (loaded from the bundled QASMBench set via the native
 core.qasm_loader, plus one native random-Clifford circuit). Each circuit gets the
 SAME fixed injected coherent-error profile (a few 1q over-rotations + 2q ZZ crosstalk),

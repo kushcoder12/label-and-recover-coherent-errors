@@ -1,7 +1,7 @@
-"""core/qasm_loader.py — native OpenQASM 2.0 -> gate-list loader (I/O boundary only).
+"""Native OpenQASM 2.0 -> gate-list loader (I/O boundary only).
 
-Per GAPS_CODE.md GAP 4, circuits enter the pipeline at the I/O boundary and everything
-downstream runs in the numpy core. qiskit is NOT required: this is a small, self-
+Circuits enter the pipeline at this I/O boundary and everything downstream
+runs in the numpy core. qiskit is not required: this is a small, self-
 contained parser for the qelib1 gate set used by the bundled QASMBench circuits, so the
 corpus is fully reproducible with no heavy dependency. (A qiskit path could be added
 here if ever desired; it is deliberately not needed.)

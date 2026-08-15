@@ -1,4 +1,4 @@
-"""Phase 7 verification (CLAUDE.md §5; estimator + payoff).
+"""Estimator + recover-and-correct payoff verification.
 
 - Labeled MLE saturates the Cramer-Rao bound 1/(M F0) at the quantum limit F0=1.
 - Closed-form MLE agrees with the scipy-free golden-section maximizer.

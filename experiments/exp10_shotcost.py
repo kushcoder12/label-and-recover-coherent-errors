@@ -1,4 +1,4 @@
-"""Experiment 10 / Figure 10 — Shot-cost positioning vs RPE (GAPS_CODE.md GAP 5).
+"""Experiment 10 / Figure 10 — Shot-cost positioning vs RPE.
 
 When is labeled-RC the cheaper way to learn a coherent parameter?
 

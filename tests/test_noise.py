@@ -1,4 +1,4 @@
-"""Noise-module oracles N1-N6 (NOISE_MODULE.md §6).
+"""Noise-module oracles N1-N6.
 
 N1 trace preservation; N2 T1 limit; N3 T2 limit; N4 depolarizing fidelity;
 N5 noiseless limit (identity layer + O1-O5 under noise=None, checked in the

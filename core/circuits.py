@@ -1,11 +1,11 @@
-"""Trotter circuits carrying twirled coherent errors (CLAUDE.md §2.3, §2.5, §4).
+"""Trotter circuits carrying twirled coherent errors.
 
 trotter_single_qubit  — single qubit, L identical cycles [Rx(alpha), Rz(s_ell*theta)].
 trotter_tfim          — 2-qubit TFIM Trotter step with a twirled Rzz coherent error.
 
 Each builder returns the final state, the ideal pre-error state |chi>, and the
 propagated error generators G-tilde_ell (dense operators) used for the Fisher
-analysis. Optional per-cycle noise channel supports the Phase-5 noisy study.
+analysis. An optional per-cycle noise channel supports the noisy-saturation study.
 """
 
 import numpy as np
@@ -36,7 +36,7 @@ def _zero_state(n):
 
 
 def trotter_single_qubit(L, alpha, theta, signs, noise=None, noise_channel=None, rng=None):
-    """Single-qubit depth model (CLAUDE.md §2.3; noise wiring per NOISE_MODULE.md §5).
+    """Single-qubit depth model.
 
     Cycle ell (1..L): apply ideal U0 = Rx(alpha), then coherent error Rz(s_ell*theta),
     then (if `noise` is a NoiseProfile) one incoherent noise layer. Input |0>.
@@ -92,7 +92,7 @@ def trotter_single_qubit(L, alpha, theta, signs, noise=None, noise_channel=None,
 
 
 def trotter_tfim(L, tau, g, delta, signs, n=2, noise=None, rng=None):
-    """Two-qubit TFIM Trotter model (CLAUDE.md §2.5; noise wiring per NOISE_MODULE.md §5).
+    """Two-qubit TFIM Trotter model.
 
     H = Z1 Z2 + g (X1 + X2). Each Trotter cycle:
         exp(-i tau Z1 Z2) . exp(-i tau g X1) . exp(-i tau g X2)

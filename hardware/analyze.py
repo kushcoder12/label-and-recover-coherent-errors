@@ -1,4 +1,4 @@
-"""hardware/analyze.py — recover theta* from OWNED labels (IBM_HARDWARE_SPEC.md §4-§5).
+"""Recover theta* from owned per-layer labels.
 
 No new physics: reuse the label-correlation estimator.
   - per circuit:   <Y> = (n0 - n1)/shots.
@@ -8,12 +8,12 @@ No new physics: reuse the label-correlation estimator.
   - recovery:      theta_hat = argmin_theta sum_i ( <Y>_i - v(L) sin(theta * sum_signs_i) )^2.
                    (Reduces to arcsin(C/v) at L=1; a proper 1-parameter fit at all L.)
   - CIs:           bootstrap over twirl instances (95%).
-Positive control: theta_hat vs theta* on the diagonal; theta*=0 must recover ~0 (§6 guardrail).
+Positive control: theta_hat vs theta* on the diagonal; theta*=0 must recover ~0.
 
 Figures:
   Fig R1 — recovered vs injected theta* (diagonal = success), marginal flat at ~0.
   Fig R2 — label correlation C(L) vs depth (labeled rising, marginal flat, v(L) ceiling).
-Every amplitude carries a bootstrap CI; nothing is plotted without it (§6).
+Every amplitude carries a bootstrap CI; nothing is plotted without it.
 """
 
 import json
@@ -305,7 +305,7 @@ def main(raw_path=None):
         json.dump(analysis, fh, indent=2)
     make_all_figures(analysis, records)
 
-    # console summary + positive-control checks (§6)
+    # console summary + positive-control checks
     print(f"backend: {analysis['backend']}")
     print("visibility v(L):", {L: round(d["v"], 4) for L, d in analysis["visibility"].items()})
     print("\n recovered theta_hat vs injected theta* (95% CI):")

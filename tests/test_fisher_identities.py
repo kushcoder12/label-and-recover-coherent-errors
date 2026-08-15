@@ -1,4 +1,4 @@
-"""Phase 2 verification (CLAUDE.md §5, Oracle O4).
+"""Oracle O4 verification.
 
 - qfi_fidelity and qfi_variance agree to 1e-3 on Rz(theta)|+> (both give F_Q = 1).
 - Fisher chain rule F_joint = F_marg + E_b[F_{s|b}] holds numerically on a random

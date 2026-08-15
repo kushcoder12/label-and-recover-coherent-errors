@@ -1,4 +1,4 @@
-"""Noise-estimation / robustness verification (NOISE_MODULE.md §7).
+"""Noise-estimation / robustness verification.
 
 - Noise-aware labeled MLE is unbiased under the full profile; naive is shrink-biased.
 - Empirical Var(theta_hat) of the noise-aware MLE saturates the noisy CRB 1/(M F_noisy).

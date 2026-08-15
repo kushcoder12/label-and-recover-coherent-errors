@@ -1,10 +1,10 @@
 """Experiment 1 / Figure 1 — Fisher-information conservation & complementarity.
 
-Single-qubit E/R model (CLAUDE.md §2.2): coherent Z-error Rz(s*theta) on |+>,
+Single-qubit E/R model: coherent Z-error Rz(s*theta) on |+>,
 sign label s in {+1,-1} with P(+1)=p (mean sign mu=2p-1), measured in Y.
 
-Everything is computed NUMERICALLY from the simulated circuit statistics and
-cross-checked against the analytic model and Oracle O1 (CLAUDE.md §7).
+Everything is computed numerically from the simulated circuit statistics and
+cross-checked against the analytic model and Oracle O1.
 
 Model functions are import-safe (no side effects); tests import them.
 Run `python experiments/exp1_conservation.py` to (re)generate Figure 1.
@@ -77,7 +77,7 @@ def analytic_decomposition(theta, mu):
 
 
 def leading_order(T):
-    """R2 leading-order complementarity: F_marg=(1-T)^2, E_b=2T-T^2 (CLAUDE.md §2.2)."""
+    """R2 leading-order complementarity: F_marg=(1-T)^2, E_b=2T-T^2."""
     return (1 - T) ** 2, 2 * T - T**2
 
 

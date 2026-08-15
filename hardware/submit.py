@@ -1,18 +1,18 @@
-"""hardware/submit.py — LIVE step 1: build, transpile (with integrity asserts), submit.
+"""Live step 1: build, transpile (with integrity asserts), submit.
 
-Run by the STUDENT with credentials. This process does NOT analyze — it writes
+Run with credentials. This process does NOT analyze — it writes
 data/job_ids.json and data/run_manifest.json immediately so nothing is lost if the
-session dies (§2.7). Retrieve is a separate, resumable step.
+session dies. Retrieve is a separate, resumable step.
 
 Guardrails enforced here (the run is INVALID if any fails — we raise, we do not submit):
-  §2.1  IBM's own gate/measurement twirling OFF (would scramble our owned labels).
-  §2.2  dynamical decoupling OFF, resilience_level=0 (measure coherent error, don't suppress).
-  §2.3  optimization_level=0 + barriers; ASSERT each transpiled circuit still has L injected
-        phase layers (the #1 failure mode).
-  §2.5  pin a good physical qubit via initial_layout; record it.
-  §2.6  snapshot T1/T2/readout/gate error for the used qubit into the manifest.
+  - IBM's own gate/measurement twirling OFF (would scramble our owned labels).
+  - dynamical decoupling OFF, resilience_level=0 (measure coherent error, don't suppress).
+  - optimization_level=0 + barriers; ASSERT each transpiled circuit still has L injected
+    phase layers (the #1 failure mode).
+  - pin a good physical qubit via initial_layout; record it.
+  - snapshot T1/T2/readout/gate error for the used qubit into the manifest.
 
-qiskit / qiskit-ibm-runtime are imported LAZILY so the offline sandbox never needs them.
+qiskit / qiskit-ibm-runtime are imported lazily so the offline sandbox never needs them.
 
 Usage:
   python submit.py            # live submit (requires IBM_TOKEN, IBM_CRN, network, qiskit)
@@ -40,7 +40,7 @@ def _pick_backend(service):
 
 
 def _pick_qubit(backend):
-    """Pick a good physical qubit (§2.5): low readout error AND decent coherence.
+    """Pick a good physical qubit: low readout error AND decent coherence.
 
     Readout error sets the visibility floor and the per-shot signal quality; T2 sets the
     coherence ceiling (even with virtual RZ there is idle + readout time). We score each
@@ -95,7 +95,7 @@ def _calib_snapshot(backend, qubit):
 
 
 def _transpile_with_integrity(circuits, specs, backend, qubit):
-    """Transpile at optimization_level=0 pinned to `qubit`, asserting label integrity (§2.3)."""
+    """Transpile at optimization_level=0 pinned to `qubit`, asserting label integrity."""
     from qiskit import transpile
     isa = transpile(
         circuits, backend=backend,
@@ -109,7 +109,7 @@ def _transpile_with_integrity(circuits, specs, backend, qubit):
 
 
 def _configure_sampler(sampler):
-    """Turn OFF IBM twirling / DD / mitigation (§2.1, §2.2)."""
+    """Turn OFF IBM twirling / DD / mitigation."""
     opt = sampler.options
     opt.twirling.enable_gates = config.RUNTIME_OPTIONS["twirling_enable_gates"]
     opt.twirling.enable_measure = config.RUNTIME_OPTIONS["twirling_enable_measure"]
@@ -140,7 +140,7 @@ def submit(validate_only=False):
     isa = _transpile_with_integrity(circuits, specs, backend, qubit)
     print("transpiler-integrity: all injected phase layers intact.")
 
-    # one Batch, as few jobs as possible (§ budget). Chunk to respect max circuits/job.
+    # one Batch, as few jobs as possible. Chunk to respect max circuits/job.
     max_per_job = 300
     chunks = [(specs[i:i + max_per_job], isa[i:i + max_per_job])
               for i in range(0, len(isa), max_per_job)]
@@ -151,8 +151,8 @@ def submit(validate_only=False):
         sampler = _configure_sampler(Sampler(mode=backend))
         o = sampler.options
         assert o.twirling.enable_gates is False and o.twirling.enable_measure is False, \
-            "IBM twirling not disabled (§2.1)"
-        assert o.dynamical_decoupling.enable is False, "dynamical decoupling not disabled (§2.2)"
+            "IBM twirling not disabled"
+        assert o.dynamical_decoupling.enable is False, "dynamical decoupling not disabled"
         print(f"VALIDATE OK: {len(circuits)} circuits transpile+assert clean; "
               f"IBM twirling OFF, DD OFF; would submit {len(chunks)} job(s) "
               f"of <= {max_per_job} circuits each. No QPU spent.")
@@ -170,7 +170,7 @@ def submit(validate_only=False):
             })
             print(f"  submitted job {j+1}/{len(chunks)}: {job.job_id()} "
                   f"({len(isa_chunk)} circuits)")
-            # write incrementally so nothing is lost (§2.7)
+            # write incrementally so nothing is lost
             _save_job_ids(job_records, backend.name, qubit, calib, ts)
 
     print(f"\nsubmitted {len(job_records)} job(s). job_ids -> {config.JOB_IDS_PATH}")

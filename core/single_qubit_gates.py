@@ -105,12 +105,10 @@ def T_gate():
 
 # ---------------------------------------------------------------------------
 # Rotation gates  R_P(theta) = exp(-i theta P / 2)   (generators are P/2).
-# Added for the coherent-error / randomized-compiling study (CLAUDE.md §2.1).
-# Existing gates above are intentionally left untouched.
 # ---------------------------------------------------------------------------
 
 def Rx(theta):
-    """Rx(theta) = exp(-i theta X/2) (CLAUDE.md §2.1).
+    """Rx(theta) = exp(-i theta X/2).
 
     [[cos(theta/2), -i sin(theta/2)], [-i sin(theta/2), cos(theta/2)]].
     """
@@ -120,7 +118,7 @@ def Rx(theta):
 
 
 def Ry(theta):
-    """Ry(theta) = exp(-i theta Y/2) (CLAUDE.md §2.1).
+    """Ry(theta) = exp(-i theta Y/2).
 
     [[cos(theta/2), -sin(theta/2)], [sin(theta/2), cos(theta/2)]].
     """
@@ -130,7 +128,7 @@ def Ry(theta):
 
 
 def Rz(theta):
-    """Rz(theta) = exp(-i theta Z/2) (CLAUDE.md §2.1).
+    """Rz(theta) = exp(-i theta Z/2).
 
     diag(exp(-i theta/2), exp(+i theta/2)). Note: differs from P_gate(theta)
     by the global phase exp(+i theta/2); use Rz for generator consistency.
@@ -140,7 +138,7 @@ def Rz(theta):
 
 
 def U3(theta, phi, lam):
-    """General single-qubit gate U3(theta, phi, lam) (CLAUDE.md §4).
+    """General single-qubit gate U3(theta, phi, lam).
 
     Same parametrisation as U_gate above, re-exported under the standard name
     with a guaranteed-complex dtype.

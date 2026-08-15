@@ -1,4 +1,4 @@
-"""Noise channels for the depth-saturation study (CLAUDE.md §4, Phase 5).
+"""Noise channels for the depth-saturation study.
 
 Thin, spec-named layer over the existing core/quantum_errors.py Kraus engine.
 Every Kraus set satisfies completeness sum_k K_k^dagger K_k = I (trace preserving),
@@ -22,7 +22,7 @@ _Z = np.array([[1, 0], [0, -1]], dtype=complex)
 
 
 def dephasing_kraus(gamma_z, dt):
-    """Pure-dephasing (T2 / phase-flip) Kraus set with rate gamma_z over time dt (CLAUDE.md §4).
+    """Pure-dephasing (T2 / phase-flip) Kraus set with rate gamma_z over time dt.
 
     Symmetric dephasing rho -> (1-q) rho + q Z rho Z, with
         q = (1 - exp(-2 gamma_z dt)) / 2,
@@ -37,7 +37,7 @@ def dephasing_kraus(gamma_z, dt):
 
 
 def amplitude_damping_kraus(gamma, dt):
-    """Amplitude-damping (T1) Kraus set with rate gamma over time dt (CLAUDE.md §4).
+    """Amplitude-damping (T1) Kraus set with rate gamma over time dt.
 
     p = 1 - exp(-gamma dt) is the |1>->|0> decay probability per step.
     K0 = [[1,0],[0,sqrt(1-p)]],  K1 = [[0,sqrt(p)],[0,0]].

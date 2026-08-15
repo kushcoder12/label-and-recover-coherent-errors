@@ -1,4 +1,4 @@
-"""Estimators for the coherent-error angle from twirled shots (CLAUDE.md §4, Phase 7).
+"""Estimators for the coherent-error angle from twirled shots.
 
 Single-parameter E/R model (Sec 2.2): per shot a sign label s in {+1,-1} and a
 binary outcome b in {+1,-1} with
@@ -18,7 +18,7 @@ def _loglik(theta, y):
 
 
 def labeled_mle(shots):
-    """MLE of theta from labeled shots (CLAUDE.md §4).
+    """MLE of theta from labeled shots.
 
     shots: iterable of (s, b) with s, b in {+1,-1}. The likelihood depends only on
     y = b s, and the score equation gives the closed form
@@ -61,7 +61,7 @@ def labeled_mle_golden(shots, lo=-np.pi / 2 + 1e-6, hi=np.pi / 2 - 1e-6, tol=1e-
 
 
 def marginal_estimate(shots, mu):
-    """Attempt to estimate theta from outcomes b ALONE, ignoring labels (CLAUDE.md §4).
+    """Attempt to estimate theta from outcomes b alone, ignoring labels.
 
     The marginal outcome mean is E[b] = mu sin theta, so sin(theta) = mean(b)/mu.
     At full twirl (mu = 0) this is undefined (0/0): theta is unidentifiable and the
@@ -102,7 +102,7 @@ def estimator_variance_vs_crb(theta_true, M, F0=1.0, trials=400, p=0.5, rng=None
 
 
 # ===========================================================================
-# NOISE-AWARE calibration model + estimators (NOISE_MODULE.md §5, §7)
+# Noise-aware calibration model + estimators
 # ===========================================================================
 # Single-qubit calibration: prepare |+>, apply the coherent Z-error Rz(theta), one
 # incoherent noise layer, measure Y; the RC twirl is the X-dressing P in {I, X}

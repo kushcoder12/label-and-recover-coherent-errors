@@ -121,7 +121,7 @@ def parse_signed_pauli(s):
 def _generator_signs(stab, destab):
     """Return per-qubit (dx, sz): the signs of the X-type destabilizer and Z-type
     stabilizer generators.  Each generator is non-identity on exactly one qubit;
-    qubit 0 is position 0 in the 2-char body (big-endian, CLAUDE.md 2.1)."""
+    qubit 0 is position 0 in the 2-char body (big-endian)."""
     dx = [1, 1]
     sz = [1, 1]
     for gen in destab:  # X-type

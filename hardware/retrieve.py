@@ -1,10 +1,10 @@
-"""hardware/retrieve.py — LIVE step 2: fetch job results, write raw data to disk.
+"""Live step 2: fetch job results, write raw data to disk.
 
-Separate, resumable process (§2.7): reads data/job_ids.json, fetches each job, and writes
-data/raw_results.json (schema §3) BEFORE any analysis. Never analyzes in the submit process.
+Separate, resumable process: reads data/job_ids.json, fetches each job, and writes
+data/raw_results.json BEFORE any analysis. Never analyzes in the submit process.
 Safe to re-run: already-fetched jobs are skipped if their records are present.
 
-qiskit-ibm-runtime imported LAZILY.
+qiskit-ibm-runtime imported lazily.
 
 Usage:
   python retrieve.py          # fetch all jobs listed in data/job_ids.json

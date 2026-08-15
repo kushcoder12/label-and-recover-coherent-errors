@@ -1,4 +1,4 @@
-"""GAP 5 verification (GAPS_CODE.md): shot-cost positioning.
+"""Shot-cost positioning verification.
 
 - labeled-RC MC variance matches the CRB 1/(M v^2 F0) (extends the Fig-6 check).
 - Minimal RPE shows the Heisenberg ~1/d^2 improvement (d^2 * Var ~ const before the

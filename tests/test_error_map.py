@@ -1,4 +1,4 @@
-"""GAP 3 verification (GAPS_CODE.md): coherent-error MAP recovery.
+"""Coherent-error MAP recovery verification.
 
 - Noiseless smoke (ties to O-series): exact recovery of every angle.
 - Under the full NoiseProfile the recovery stays unbiased (visibility-debiased,

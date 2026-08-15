@@ -1,14 +1,14 @@
 """Experiment 2 / Figure 2 — No washout of coherent information with depth.
 
-Single-qubit L-cycle Trotter model (CLAUDE.md §2.3). Three per-shot quantities
+Single-qubit L-cycle Trotter model. Three per-shot quantities
 about the coherent-error angle theta:
 
   labeled  E[F_Q] = sum_ell (1 - <G-tilde_ell>^2) = sum_ell sin^2(ell*alpha)   (S5)  -> ~ L/2
   coherent F_Q^coh = 4 Var_chi(1/2 sum_ell G-tilde_ell) = (sum_ell sin(ell*alpha))^2 (S8) -> bounded
   marginal (standard RC, labels forgotten): QFI of the label-averaged mixed state -> ~ 0 (S6)
 
-All computed from the simulated circuit and cross-checked against Oracles O2 & O3
-(CLAUDE.md §7). Model functions are import-safe; tests import them.
+All computed from the simulated circuit and cross-checked against Oracles O2 & O3.
+Model functions are import-safe; tests import them.
 """
 
 import os
@@ -118,7 +118,7 @@ def coherent_analytic(L, alpha):
 _O2 = {  # alpha = 1.0 rad. NOTE: L=5,6 labeled corrected from the original hand table
          # (3.047295, 3.125368) to the exact Sum sin^2(l*alpha) = (3.047096, 3.125169);
          # a ~2e-4 arithmetic slip in the source table, confirmed by 4 independent
-         # methods (closed form, 1-<G>^2, 2^L enumeration, Method-A fidelity). See HISTORY.md.
+         # methods (closed form, 1-<G>^2, 2^L enumeration, Method-A fidelity).
     1: (0.708073, 0.708073),
     2: (1.534895, 3.065190),
     3: (1.554810, 3.579242),
@@ -169,7 +169,7 @@ def verify_oracle_O3(verbose=True):
 
 def verify_methods_agree(verbose=True):
     """Method A (fidelity QFI on evolved state) vs Method B (generator variance),
-    for random fixed patterns (CLAUDE.md §2.4 mandatory cross-check)."""
+    for random fixed patterns (mandatory cross-check)."""
     rng = np.random.default_rng(0)
     alpha, theta = 1.0, 1e-3
     max_err = 0.0

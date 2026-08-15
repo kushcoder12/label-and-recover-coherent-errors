@@ -1,4 +1,4 @@
-"""Phase 4 verification (CLAUDE.md §5, Oracles O2 & O3).
+"""Oracles O2 & O3 verification.
 
 Reproduce the depth tables:
   - Oracle O2 (alpha = 1.0 rad) to 1e-6,

@@ -1,4 +1,4 @@
-"""Experiment 8 / Figure 8 — Recovered coherent-error MAP (GAPS_CODE.md GAP 3).
+"""Experiment 8 / Figure 8 — Recovered coherent-error MAP.
 
 A multi-gate 5-qubit circuit carries a VECTOR of K coherent errors of BOTH types --
 single-qubit over-rotations and two-qubit ZZ crosstalk -- each twirled with its own

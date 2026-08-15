@@ -1,12 +1,11 @@
-"""hardware/config.py — single source of truth for the sweep, paths, and options.
+"""Single source of truth for the sweep, paths, and hardware run options.
 
-Implements IBM_HARDWARE_SPEC.md §1 (sweep), §2 (pipeline-correctness options),
-§3 (data schema paths). No qiskit / no network here — pure configuration so both
-the offline dress-rehearsal (local_sim) and the live pipeline (submit/retrieve)
-read identical parameters.
+No qiskit / no network here — pure configuration so both the offline
+dress-rehearsal (local_sim) and the live pipeline (submit/retrieve) read
+identical parameters.
 
-Credentials are read from environment variables ONLY (§0). Never hard-code a token.
-A tiny .env loader is provided so the student can keep IBM_TOKEN / IBM_CRN in
+Credentials are read from environment variables only. Never hard-code a token.
+A tiny .env loader is provided so IBM_TOKEN / IBM_CRN can live in
 hardware/.env (git-ignored) without installing python-dotenv.
 """
 
@@ -32,7 +31,7 @@ def _bind_paths(data_name, fig_name):
     g = globals()
     g["DATA_DIR"] = os.path.join(HARDWARE_DIR, data_name)
     g["FIG_DIR"] = os.path.join(HARDWARE_DIR, fig_name)
-    # Resumable-I/O artifacts (§2.7, §3)
+    # Resumable-I/O artifacts
     g["JOB_IDS_PATH"] = os.path.join(g["DATA_DIR"], "job_ids.json")
     g["MANIFEST_PATH"] = os.path.join(g["DATA_DIR"], "run_manifest.json")
     g["RAW_RESULTS_PATH"] = os.path.join(g["DATA_DIR"], "raw_results.json")  # one record/circuit
@@ -56,14 +55,14 @@ _bind_paths(*_OFFLINE_DIRS)
 
 
 # ---------------------------------------------------------------------------
-# Experiment grid — IBM_HARDWARE_SPEC.md §1 (Variant A, single qubit)
+# Experiment grid (Variant A, single qubit)
 # ---------------------------------------------------------------------------
 THETAS = [0.0, 0.05, 0.1, 0.2, 0.3]          # rad; 0.0 is the null control
 DEPTHS = [1, 2, 4, 8, 16, 32]                # Trotter cycles
 INSTANCES_PER_POINT = 50                     # distinct random sign vectors (spec: 40-60)
 SHOTS = 3000                                 # per circuit (spec: 2000-4000)
 
-# Per-depth visibility-calibration circuits (§4: v estimated from the data).
+# Per-depth visibility-calibration circuits (v estimated from the data).
 # Same L layers -> same decoherence as the signal circuits at that depth, but a
 # KNOWN net phase pi/2 so ideal <Y> = 1 and the measured <Y> = v(L) directly.
 VISCAL_REPEATS = 20
@@ -76,36 +75,36 @@ SEED = 20260722
 # with zero. We use an ABSOLUTE band rather than a per-point 95% CI test: with several
 # null depths, ~1-in-20 of the 95% CIs excludes zero by pure chance (multiple comparisons),
 # so a per-point CI gate would flake. 0.01 rad is the physically-negligible shot+readout
-# floor for this shot budget; any |theta_hat| below it is "recovered ~0" (§6 null check).
+# floor for this shot budget; any |theta_hat| below it is "recovered ~0".
 NULL_TOL = 0.01
 
 # ---------------------------------------------------------------------------
-# Hardware / runtime options — IBM_HARDWARE_SPEC.md §2
+# Hardware / runtime options
 # ---------------------------------------------------------------------------
 # These are asserted onto the SamplerV2 in submit.py. Recorded into the manifest.
 RUNTIME_OPTIONS = {
-    "optimization_level": 0,          # §2.3 — do not let the transpiler eat the circuit
-    "twirling_enable_gates": False,   # §2.1 — IBM's own twirl would scramble our labels
-    "twirling_enable_measure": False, # §2.1
-    "dynamical_decoupling": False,    # §2.2 — we MEASURE coherent error, not suppress it
-    "measurement_level": 2,           # §2.4 — per-shot bits
-    "resilience_level": 0,            # §2.2 — no ZNE / PEC
+    "optimization_level": 0,          # do not let the transpiler eat the circuit
+    "twirling_enable_gates": False,   # IBM's own twirl would scramble our labels
+    "twirling_enable_measure": False,
+    "dynamical_decoupling": False,    # we MEASURE coherent error, not suppress it
+    "measurement_level": 2,           # per-shot bits
+    "resilience_level": 0,            # no ZNE / PEC
 }
 
-# Physical-qubit selection (§2.5). If None, submit.py picks the best qubit from
+# Physical-qubit selection. If None, submit.py picks the best qubit from
 # backend.properties() (low readout error, decent T2). Set an int to pin explicitly.
 PIN_QUBIT = None
 
 # Backend selection for the live run. None -> least-busy operational backend.
 BACKEND_NAME = "ibm_marrakesh"
 
-# Save per-shot bitstrings into the raw data (§3, optional). True is heavier on disk
+# Save per-shot bitstrings into the raw data (optional). True is heavier on disk
 # but keeps the full record; the analysis only needs counts.
 SAVE_BITSTRINGS = False
 
 
 # ---------------------------------------------------------------------------
-# Representative offline noise model — for the dress rehearsal ONLY (§6).
+# Representative offline noise model — for the dress rehearsal only.
 # Not used on hardware; the device supplies its own noise. Values are typical of
 # an IBM Eagle/Heron qubit (times in microseconds). Chosen to give a realistic
 # visibility v ~ 0.9-0.97 so the debiasing step is genuinely exercised.
@@ -122,7 +121,7 @@ OFFLINE_NOISE = {
 
 
 # ---------------------------------------------------------------------------
-# .env loading (no external dependency) — IBM_HARDWARE_SPEC.md §0
+# .env loading (no external dependency)
 # ---------------------------------------------------------------------------
 def load_env(path=ENV_PATH):
     """Populate os.environ from hardware/.env if present (does not overwrite existing).
@@ -145,7 +144,7 @@ def load_env(path=ENV_PATH):
 
 
 def require_credentials():
-    """Return (token, crn), loading hardware/.env first. Fails loudly if unset (§0)."""
+    """Return (token, crn), loading hardware/.env first. Fails loudly if unset."""
     load_env()
     token = os.environ.get("IBM_TOKEN", "").strip()
     crn = os.environ.get("IBM_CRN", "").strip()

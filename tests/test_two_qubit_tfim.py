@@ -1,4 +1,4 @@
-"""Phase 6 verification (CLAUDE.md §5, Oracle O5).
+"""Oracle O5 verification (two-qubit TFIM).
 
 - Conservation chain-rule residual ~machine precision at every L (2-qubit TFIM).
 - Labeled Sum(1-<G>^2) matches exact 2^L enumeration.

@@ -1,5 +1,4 @@
-"""core/error_map.py — recovery of a VECTOR of coherent errors from RC labels
-(GAPS_CODE.md GAP 3; THEOREMS.md conservation parts (1)-(4), Results A-D).
+"""Recovery of a vector of coherent errors from RC labels.
 
 A circuit carries K injected coherent errors (single-qubit over-rotations and/or
 two-qubit ZZ crosstalk), each twirled with its own per-shot sign label s_a. Keeping

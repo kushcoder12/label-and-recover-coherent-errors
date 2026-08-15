@@ -1,5 +1,5 @@
 """Experiment 7 / Figure 7 — Depth saturation of the recoverable coherent information
-under the FULL device noise profile (NOISE_MODULE.md §7, "saturation-vs-T2 redo").
+under the full device noise profile.
 
 This repeats the exp3 saturation study but replaces the single dephasing channel with
 the complete per-cycle incoherent layer of a NoiseProfile (amplitude damping T1 +

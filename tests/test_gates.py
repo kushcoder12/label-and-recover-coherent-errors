@@ -1,4 +1,4 @@
-"""Phase 1 verification (CLAUDE.md §5, Oracle O5).
+"""Oracle O5 verification (gates and Pauli propagation).
 
 - Every rotation gate R_P(theta) is unitary.
 - Rz(pi) == diag(-1j, 1j) (= Z up to global phase).
