@@ -21,6 +21,9 @@ EXPERIMENTS = [
     ("exp8_error_map", "Figure 8"),
     ("exp9_corpus", "Figure 9"),
     ("exp10_shotcost", "Figure 10"),
+    ("exp11_twoqubit_zz", "Figure 12"),
+    ("exp12_threequbit_zz", "Figure 13"),
+    ("exp13_joint_vs_pairwise_cost", "Figure 14"),
 ]
 
 

@@ -23,6 +23,7 @@ MODULES = [
     "test_error_map",         # coherent-error map recovery
     "test_corpus",            # corpus generality
     "test_shotcost",          # shot-cost vs RPE
+    "test_multiqubit_zz",     # static ZZ crosstalk oracles MQ1-MQ3
 ]
 
 

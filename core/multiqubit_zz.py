@@ -1,0 +1,161 @@
+"""Static ZZ crosstalk: recovering a neighbor-coupling vector from RC labels.
+
+Extends the single-qubit sign-flip theorem (core/twirl.py, core/estimator.py) to a
+DIFFERENT mechanism than a neighbor's real microwave drive: static ZZ coupling, an
+always-on Z_i Z_j term present whether or not either qubit is being driven. Recovery
+requires deliberately preparing each neighbor in a known, independently-randomized
+computational-basis state every shot and recording that choice as an additional label
+c_j alongside the qubit's own RC sign s_1 -- this is NOT a passive read of an
+unmodified production circuit, it is a second owned label the caller must inject.
+
+Convention: 1-indexed qubits, big-endian, matching operator_on_state.py. Labels are
+always returned to the caller (twirl.py's invariant); this module never averages over
+s_1 or any c_j internally.
+"""
+
+import numpy as np
+
+from .pauli import pauli
+from .operator_on_state import single_qubit_op
+from .single_qubit_gates import X_gate
+from ._compat import quiet
+
+_X = X_gate()
+
+
+def _embed_1q(op2, q, n):
+    """Full 2^n operator for a 2x2 op on qubit q (1-indexed, big-endian)."""
+    ops = [np.eye(2, dtype=complex)] * n
+    ops[q - 1] = op2
+    out = ops[0]
+    for o in ops[1:]:
+        out = np.kron(out, o)
+    return out
+
+
+@quiet
+def build_zz_hamiltonian(deltas, J_matrix, n):
+    """Dense 2^n x 2^n Hamiltonian, Sec 1:
+
+        H = sum_i (deltas[i]/2) Z_i + sum_{i<j} (J_matrix[i][j]/4) Z_i Z_j.
+
+    deltas   : length-n sequence, qubit (i+1)'s own detuning-type coherent error.
+    J_matrix : n x n symmetric matrix; J_matrix[i][j] (i<j) is the static ZZ coupling
+               between qubits i+1 and j+1. Diagonal and the i>j half are ignored.
+    """
+    dim = 2**n
+    H = np.zeros((dim, dim), dtype=complex)
+    Zs = [_embed_1q(pauli("Z"), q, n) for q in range(1, n + 1)]
+    for i in range(n):
+        if deltas[i] != 0.0:
+            H += (deltas[i] / 2.0) * Zs[i]
+    for i in range(n):
+        for j in range(i + 1, n):
+            Jij = J_matrix[i][j]
+            if Jij != 0.0:
+                H += (Jij / 4.0) * (Zs[i] @ Zs[j])
+    return H
+
+
+def sample_neighbor_labels(neighbors, rng=None):
+    """Draw one independent, uniform +/-1 label c_j per neighbor qubit (Sec 2.1).
+
+    neighbors : iterable of neighbor qubit indices (1-indexed).
+    Returns {j: c_j}. Labels are handed back to the caller and never averaged here,
+    matching twirl.sample_sign_pattern's convention.
+    """
+    if rng is None:
+        rng = np.random.default_rng()
+    neighbors = list(neighbors)
+    draws = rng.random(len(neighbors))
+    return {j: (1 if d < 0.5 else -1) for j, d in zip(neighbors, draws)}
+
+
+def prepare_neighbor_state(state, c_j, qubit_j, n):
+    """Prepare neighbor qubit_j in |1> if c_j=-1, leave it at |0> if c_j=+1.
+
+    The caller supplies c_j (from sample_neighbor_labels); this function only applies
+    the corresponding real state-preparation gate, exactly as twirl.apply_signed_z_error
+    only applies the sign it is handed.
+    """
+    if c_j == -1:
+        return single_qubit_op(state, _X, qubit_j, n)
+    return state
+
+
+# ---------------------------------------------------------------------------
+# Recovery
+# ---------------------------------------------------------------------------
+def _point_estimate(s_arr, c_arrs, b_arr, neighbor_qubits):
+    """One pass of the inversion (Sec 2.4, 2.4a) from raw label/outcome arrays.
+
+    Exact two-label inversion for a single neighbor; the leading-order multi-neighbor
+    inversion of Sec 2.4b otherwise (their formulas agree to leading order in kappa).
+    """
+    X = float(np.mean(s_arr * b_arr))
+    Y = {j: float(np.mean(s_arr * c_arrs[j] * b_arr)) for j in neighbor_qubits}
+
+    if len(neighbor_qubits) == 1:
+        j = neighbor_qubits[0]
+        Xp = np.clip(X + Y[j], -1.0, 1.0)
+        Xm = np.clip(X - Y[j], -1.0, 1.0)
+        theta0_hat = 0.5 * (np.arcsin(Xp) + np.arcsin(Xm))
+        kappa_hat = {j: 0.5 * (np.arcsin(Xp) - np.arcsin(Xm))}
+        return float(theta0_hat), {j: float(kappa_hat[j])}
+
+    theta0_hat = float(np.arcsin(np.clip(X, -1.0, 1.0)))
+    cos_t0 = np.cos(theta0_hat)
+    kappa_hat = {}
+    for j in neighbor_qubits:
+        if abs(cos_t0) < 1e-12:
+            kappa_hat[j] = float("nan")
+            continue
+        kappa_hat[j] = float(np.arcsin(np.clip(Y[j], -1.0, 1.0)) / cos_t0)
+    return theta0_hat, kappa_hat
+
+
+def joint_correlation_estimator(records, target_qubit, neighbor_qubits, B=1000, seed=None):
+    """Recover theta_1^(0) and every kappa_1j from one pool of owned-label shots.
+
+    records         : iterable of (s_1, c_dict, b_1), s_1/b_1 in {+1,-1}, c_dict a
+                       {neighbor: +/-1} mapping covering every entry of neighbor_qubits.
+    target_qubit    : qubit 1's index (carried through into the result for bookkeeping;
+                       the records are already specific to this target).
+    neighbor_qubits : the neighbor indices to recover kappa_1j for.
+
+    Returns {theta0_hat, kappa_hat: {j: value}, bootstrap_ci: {theta0: (lo,hi),
+    kappa: {j: (lo,hi)}}}, resampling over shots (matching hardware/analyze.py's
+    bootstrap-over-instances pattern).
+    """
+    neighbor_qubits = list(neighbor_qubits)
+    records = list(records)
+    s_arr = np.array([r[0] for r in records], dtype=float)
+    b_arr = np.array([r[2] for r in records], dtype=float)
+    c_arrs = {j: np.array([r[1][j] for r in records], dtype=float) for j in neighbor_qubits}
+
+    theta0_hat, kappa_hat = _point_estimate(s_arr, c_arrs, b_arr, neighbor_qubits)
+
+    rng = np.random.default_rng(seed)
+    m = len(records)
+    theta0_bs = np.empty(B)
+    kappa_bs = {j: np.empty(B) for j in neighbor_qubits}
+    for b in range(B):
+        idx = rng.integers(0, m, m)
+        th, kh = _point_estimate(s_arr[idx], {j: c_arrs[j][idx] for j in neighbor_qubits},
+                                 b_arr[idx], neighbor_qubits)
+        theta0_bs[b] = th
+        for j in neighbor_qubits:
+            kappa_bs[j][b] = kh[j]
+
+    def ci(a):
+        return (float(np.percentile(a, 2.5)), float(np.percentile(a, 97.5)))
+
+    return {
+        "target_qubit": target_qubit,
+        "theta0_hat": theta0_hat,
+        "kappa_hat": kappa_hat,
+        "bootstrap_ci": {
+            "theta0": ci(theta0_bs),
+            "kappa": {j: ci(kappa_bs[j]) for j in neighbor_qubits},
+        },
+    }

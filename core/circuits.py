@@ -10,11 +10,13 @@ analysis. An optional per-cycle noise channel supports the noisy-saturation stud
 
 import numpy as np
 
-from .single_qubit_gates import Rx, Rz, X_gate, Y_gate, Z_gate
+from .single_qubit_gates import Rx, Rz, X_gate, Y_gate, Z_gate, Hadamard
 from .two_qubit_gates import Rzz
 from .operator_on_state import single_qubit_op, two_qubit_op
-from .pauli import pauli, pauli_string, propagate_generator
+from .pauli import pauli, pauli_string, propagate_generator, expectation_single_qubit
 from .noise import apply_incoherent_layer
+from .multiqubit_zz import build_zz_hamiltonian
+from ._compat import quiet
 
 _Z = pauli("Z")
 
@@ -160,6 +162,63 @@ def trotter_tfim(L, tau, g, delta, signs, n=2, noise=None, rng=None):
         W = W @ U0                  # accumulate one more ideal cycle toward the output
     gens.reverse()                  # order ell = 1..L
     return final, chi, gens
+
+
+@quiet
+def multi_qubit_zz_probe(theta0, kappa_dict, s_1, c_dict, noise=None):
+    """Star-topology ZZ-crosstalk probe (MULTIQUBIT_CROSSTALK_SPEC Sec 2, 4).
+
+    Qubit 1 (the target) starts at |+>; each neighbor j in kappa_dict is prepared in
+    |0> (c_dict[j]=+1) or |1> (c_dict[j]=-1); qubits 2..Q+1 are the neighbors, coupled
+    to qubit 1 only (no neighbor-neighbor coupling). The state then evolves for unit
+    time under the FULL (1+Q)-qubit static Hamiltonian
+
+        H = (theta0/2) Z_1 + sum_j (kappa_1j) Z_1 Z_j,
+
+    twirled by s_1 (an X_1-dressing, which flips the sign of every Z_1-bearing term,
+    since X_1 anticommutes with Z_1 and with Z_1 Z_j but not with Z_j alone). This is
+    the FULL evolution, not the effective-angle formula theta_1 = theta0 + sum kappa*c
+    -- that formula is a prediction to be checked against this builder's output
+    (see test_multiqubit_zz.test_probe_matches_theory), never hard-coded into it.
+
+    kappa_dict, c_dict : {neighbor qubit index: value}, same key set, neighbors must
+                          be qubits 2..Q+1 (contiguous, star topology).
+    noise               : NoiseProfile or None.
+
+    Returns <Y_1>, the exact expectation value of Y on qubit 1 (float).
+    """
+    neighbors = sorted(kappa_dict)
+    n = 1 + len(neighbors)
+    if neighbors != list(range(2, n + 1)):
+        raise ValueError(f"neighbors must be qubits 2..{n} (star topology), got {neighbors}")
+
+    deltas = [theta0] + [0.0] * len(neighbors)
+    J = [[0.0] * n for _ in range(n)]
+    for j in neighbors:
+        J[0][j - 1] = J[j - 1][0] = 2.0 * kappa_dict[j]
+    H = build_zz_hamiltonian(deltas, J, n)
+    U = _expm_anti(-1j * s_1 * H)
+
+    state = _zero_state(n)
+    state = single_qubit_op(state, Hadamard(), 1, n)
+    for j in neighbors:
+        if c_dict[j] == -1:
+            state = single_qubit_op(state, X_gate(), j, n)
+
+    if noise is None:
+        state = U @ state
+        return expectation_single_qubit(state, Y_gate(), 1, n)
+
+    rho = np.outer(state, state.conj())
+    rho = U @ rho @ U.conj().T
+    rho = apply_incoherent_layer(rho, noise, n, mode="dm")
+    Y1 = _embed_1q(Y_gate(), 1, n)
+    return float(np.trace(rho @ Y1).real)
+
+
+def two_qubit_zz_probe(theta0, kappa_12, s_1, c_2, noise=None):
+    """Two-qubit special case of multi_qubit_zz_probe: one neighbor (qubit 2)."""
+    return multi_qubit_zz_probe(theta0, {2: kappa_12}, s_1, {2: c_2}, noise=noise)
 
 
 # ---------------------------------------------------------------------------

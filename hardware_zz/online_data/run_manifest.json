@@ -1,0 +1,79 @@
+{
+  "backend": "ibm_marrakesh",
+  "pair_qubits": [
+    53,
+    54
+  ],
+  "star_qubits": [
+    4,
+    3,
+    5
+  ],
+  "date": "2026-08-16T10:52:41.026190+00:00",
+  "options": {
+    "optimization_level": 0,
+    "twirling_enable_gates": false,
+    "twirling_enable_measure": false,
+    "dynamical_decoupling": false,
+    "measurement_level": 2,
+    "resilience_level": 0
+  },
+  "calib": {
+    "pair": [
+      {
+        "qubit": 53,
+        "T1": 0.0002790135945881495,
+        "T2": 0.0001859548161534955,
+        "readout_err": 0.0037841796875,
+        "gate_err": 0.00025343339039209713
+      },
+      {
+        "qubit": 54,
+        "T1": 0.00023472946764725532,
+        "T2": 0.00027613605043822734,
+        "readout_err": 0.0052490234375,
+        "gate_err": 0.00016219785683152085
+      }
+    ],
+    "star": [
+      {
+        "qubit": 4,
+        "T1": 0.00021734227258177262,
+        "T2": 0.00023287110005791454,
+        "readout_err": 0.0062255859375,
+        "gate_err": 0.0003417287185134604
+      },
+      {
+        "qubit": 3,
+        "T1": 0.00021405081420193992,
+        "T2": 0.00021572816473627607,
+        "readout_err": 0.006103515625,
+        "gate_err": 0.00026164400570260734
+      },
+      {
+        "qubit": 5,
+        "T1": 0.00021090494951696938,
+        "T2": 0.0001587697474431451,
+        "readout_err": 0.0089111328125,
+        "gate_err": 0.00039865198715857437
+      }
+    ]
+  },
+  "grid": {
+    "thetas": [
+      0.0,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "delay_s": 8e-06,
+    "instances": {
+      "pair": 30,
+      "star": 40
+    },
+    "shots": 2000,
+    "viscal_repeats": 20
+  },
+  "n_signal": 280,
+  "n_viscal": 40
+}
