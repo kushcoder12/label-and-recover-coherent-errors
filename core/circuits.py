@@ -15,7 +15,9 @@ from .two_qubit_gates import Rzz
 from .operator_on_state import single_qubit_op, two_qubit_op
 from .pauli import pauli, pauli_string, propagate_generator, expectation_single_qubit
 from .noise import apply_incoherent_layer
-from .multiqubit_zz import build_zz_hamiltonian
+from .multiqubit_zz import build_zz_hamiltonian, prepare_neighbor_state
+from .twirl import apply_signed_z_error
+from .drive_crosstalk import n_real_pulses, apply_padding, inject_drive_leakage
 from ._compat import quiet
 
 _Z = pauli("Z")
@@ -219,6 +221,58 @@ def multi_qubit_zz_probe(theta0, kappa_dict, s_1, c_dict, noise=None):
 def two_qubit_zz_probe(theta0, kappa_12, s_1, c_2, noise=None):
     """Two-qubit special case of multi_qubit_zz_probe: one neighbor (qubit 2)."""
     return multi_qubit_zz_probe(theta0, {2: kappa_12}, s_1, {2: c_2}, noise=noise)
+
+
+@quiet
+def three_label_probe(theta_1_0, kappa_1j, phi_1j, s_1, c_j, p_j, noise=None):
+    """Drive-crosstalk probe: adds the padding label p_j to two_qubit_zz_probe
+    (DRIVE_CROSSTALK_SPEC Sec 1-2). Qubit 1 (target) starts at |+>, qubit 2 (neighbor)
+    is prepared per c_j, exactly as two_qubit_zz_probe/multi_qubit_zz_probe do -- that
+    |+> convention (not the literal |0> shorthand of Sec 2.1) is reused unchanged here,
+    since it is what makes the Y-probe sensitive to a Z-generator error in the first
+    place.
+
+    On top of that unchanged Part-2 construction, this adds two NEW steps: firing extra
+    real pulses on the neighbor per p_j (apply_padding, a no-op on the logical state --
+    X_pi twice is identity), and injecting the resulting phenomenological leakage
+    Rz(s_1 * phi_1j * n_j) on qubit 1 (inject_drive_leakage), where n_j counts every
+    real pulse the neighbor received this shot (n_real_pulses). qubit 1's own error and
+    the static-ZZ contribution are reused exactly as in Part 2 -- apply_signed_z_error
+    (twirl.py) and build_zz_hamiltonian (multiqubit_zz.py) unchanged.
+
+    All four terms (own error, ZZ coupling, leakage) are diagonal in the Z1 basis, so
+    they commute and can be applied in any order; together they reproduce exactly
+
+        <Y_1> = s_1 * sin(theta_1_0 + kappa_1j * c_j + phi_1j * n_j(c_j, p_j))
+
+    checked against this builder in tests/test_drive_crosstalk.py, never hard-coded
+    into it (same discipline as multi_qubit_zz_probe).
+
+    Returns <Y_1>, the exact expectation value of Y on qubit 1 (float).
+    """
+    n = 2
+    n_j = n_real_pulses(c_j, p_j)
+
+    state = _zero_state(n)
+    state = single_qubit_op(state, Hadamard(), 1, n)
+    state = prepare_neighbor_state(state, c_j, 2, n)
+    state = apply_padding(state, p_j, 2, n)
+
+    state = apply_signed_z_error(state, theta_1_0, s_1, 1, n)
+
+    J = [[0.0, 2.0 * kappa_1j], [2.0 * kappa_1j, 0.0]]
+    H = build_zz_hamiltonian([0.0, 0.0], J, n)
+    state = _expm_anti(-1j * s_1 * H) @ state
+
+    state = inject_drive_leakage(state, s_1 * phi_1j, n_j, 1, n)
+
+    if noise is None:
+        return expectation_single_qubit(state, Y_gate(), 1, n)
+
+    rho = np.outer(state, state.conj())
+    rho = apply_incoherent_layer(rho, noise, n, mode="dm")
+    Y1 = _embed_1q(Y_gate(), 1, n)
+    return float(np.trace(rho @ Y1).real)
 
 
 # ---------------------------------------------------------------------------

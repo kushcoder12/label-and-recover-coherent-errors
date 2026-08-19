@@ -24,6 +24,7 @@ MODULES = [
     "test_corpus",            # corpus generality
     "test_shotcost",          # shot-cost vs RPE
     "test_multiqubit_zz",     # static ZZ crosstalk oracles MQ1-MQ3
+    "test_drive_crosstalk",   # drive-induced leakage oracles DC1-DC3
 ]
 
 

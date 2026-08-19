@@ -159,3 +159,96 @@ def joint_correlation_estimator(records, target_qubit, neighbor_qubits, B=1000, 
             "kappa": {j: ci(kappa_bs[j]) for j in neighbor_qubits},
         },
     }
+
+
+# ---------------------------------------------------------------------------
+# Drive-crosstalk recovery (DRIVE_CROSSTALK_SPEC Sec 2.3-2.4): a third label p_j
+# stratifies the same pool into two Part-2 problems, each solved by the ABOVE
+# _point_estimate -- no new inversion math, only the stratify/combine bookkeeping.
+# ---------------------------------------------------------------------------
+def stratified_three_label_estimator(records, target_qubit=1, neighbor_qubit=2,
+                                     B=1000, seed=None):
+    """Recover theta_1_0, kappa_1j, phi_1j from one pool of (s_1, c_j, p_j, b_1) shots.
+
+    records : iterable of (s_1, c_j, p_j, b_1), all four in {+1,-1}.
+
+    Within a fixed p_j the model reduces exactly to Part 2's two-label form (Sec 2.3):
+    stratum p_j=+1 has effective (Theta-Phi, K), stratum p_j=-1 has (Theta+Phi, K),
+    where Theta=theta_1_0+1.5*phi_1j, K=kappa_1j-0.5*phi_1j, Phi=phi_1j. Splitting by
+    p_j and calling _point_estimate (the same arcsin-sum/difference inversion
+    joint_correlation_estimator uses) on each stratum, then combining per Sec 2.3-2.4,
+    recovers all three physical parameters exactly (Oracle DC2) -- the two-label
+    inversion itself is never reimplemented here.
+
+    Returns {theta_1_0_hat, kappa_1j_hat, phi_1j_hat, K_disagreement, bootstrap_ci}.
+    K_disagreement = |K_hat from the p_j=+1 stratum - K_hat from the p_j=-1 stratum|,
+    reported unconditionally (Sec 2.3): a large value signals the additive-angle model
+    is not holding at the tested parameters, or that padding is not behaving as
+    assumed, and must not be silently averaged away.
+    """
+    records = list(records)
+    plus = [(r[0], r[1], r[3]) for r in records if r[2] == 1]
+    minus = [(r[0], r[1], r[3]) for r in records if r[2] == -1]
+    if not plus or not minus:
+        raise ValueError("stratified_three_label_estimator needs shots at both p_j=+1 "
+                         "and p_j=-1 -- got %d and %d" % (len(plus), len(minus)))
+
+    def _arrays(stratum):
+        s = np.array([r[0] for r in stratum], dtype=float)
+        c = np.array([r[1] for r in stratum], dtype=float)
+        b = np.array([r[2] for r in stratum], dtype=float)
+        return s, c, b
+
+    s_p, c_p, b_p = _arrays(plus)
+    s_m, c_m, b_m = _arrays(minus)
+
+    def _combine(s_p, c_p, b_p, s_m, c_m, b_m):
+        # stratum p_j=+1 (s_p/c_p/b_p): model reduces to Part 2's form with
+        # theta_1_0 -> (Theta-Phi), kappa_1j -> K.
+        theta_minus_phi, kappa_from_pplus = _point_estimate(s_p, {neighbor_qubit: c_p}, b_p,
+                                                             [neighbor_qubit])
+        # stratum p_j=-1 (s_m/c_m/b_m): theta_1_0 -> (Theta+Phi), kappa_1j -> K.
+        theta_plus_phi, kappa_from_pminus = _point_estimate(s_m, {neighbor_qubit: c_m}, b_m,
+                                                             [neighbor_qubit])
+        K_pplus = kappa_from_pplus[neighbor_qubit]
+        K_pminus = kappa_from_pminus[neighbor_qubit]
+        Theta = 0.5 * (theta_plus_phi + theta_minus_phi)
+        Phi = 0.5 * (theta_plus_phi - theta_minus_phi)
+        K = 0.5 * (K_pplus + K_pminus)
+        return Theta, Phi, K, abs(K_pplus - K_pminus)
+
+    Theta_hat, Phi_hat, K_hat, K_disagreement = _combine(s_p, c_p, b_p, s_m, c_m, b_m)
+    theta_1_0_hat = Theta_hat - 1.5 * Phi_hat
+    kappa_1j_hat = K_hat + 0.5 * Phi_hat
+    phi_1j_hat = Phi_hat
+
+    rng = np.random.default_rng(seed)
+    m_p, m_m = len(plus), len(minus)
+    theta0_bs = np.empty(B)
+    kappa_bs = np.empty(B)
+    phi_bs = np.empty(B)
+    for b in range(B):
+        idx_p = rng.integers(0, m_p, m_p)
+        idx_m = rng.integers(0, m_m, m_m)
+        Th, Ph, K, _ = _combine(s_p[idx_p], c_p[idx_p], b_p[idx_p],
+                                s_m[idx_m], c_m[idx_m], b_m[idx_m])
+        theta0_bs[b] = Th - 1.5 * Ph
+        kappa_bs[b] = K + 0.5 * Ph
+        phi_bs[b] = Ph
+
+    def ci(a):
+        return (float(np.percentile(a, 2.5)), float(np.percentile(a, 97.5)))
+
+    return {
+        "target_qubit": target_qubit,
+        "neighbor_qubit": neighbor_qubit,
+        "theta_1_0_hat": float(theta_1_0_hat),
+        "kappa_1j_hat": float(kappa_1j_hat),
+        "phi_1j_hat": float(phi_1j_hat),
+        "K_disagreement": float(K_disagreement),
+        "bootstrap_ci": {
+            "theta_1_0": ci(theta0_bs),
+            "kappa_1j": ci(kappa_bs),
+            "phi_1j": ci(phi_bs),
+        },
+    }

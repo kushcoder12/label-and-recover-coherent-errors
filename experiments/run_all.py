@@ -24,6 +24,9 @@ EXPERIMENTS = [
     ("exp11_twoqubit_zz", "Figure 12"),
     ("exp12_threequbit_zz", "Figure 13"),
     ("exp13_joint_vs_pairwise_cost", "Figure 14"),
+    ("exp14_drive_crosstalk_oracle", "Figure 17"),
+    ("exp15_drive_crosstalk_noisy", "Figure 16"),
+    ("exp16_variance_decomposition", "Figure 18"),
 ]
 
 

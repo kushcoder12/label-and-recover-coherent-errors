@@ -1,0 +1,2206 @@
+[
+  {
+    "cid": "dcsig_t0.00_i000",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1007,
+      "1": 993
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i001",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 948,
+      "1": 1052
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i002",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 936,
+      "1": 1064
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i003",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 960,
+      "1": 1040
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i004",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 990,
+      "1": 1010
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i005",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 969,
+      "1": 1031
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i006",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 942,
+      "1": 1058
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i007",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 938,
+      "1": 1062
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i008",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 978,
+      "1": 1022
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i009",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 932,
+      "1": 1068
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i010",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 951,
+      "1": 1049
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i011",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1018,
+      "1": 982
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i012",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 968,
+      "1": 1032
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i013",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 963,
+      "1": 1037
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i014",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 982,
+      "1": 1018
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i015",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 969,
+      "1": 1031
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i016",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 984,
+      "1": 1016
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i017",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 967,
+      "1": 1033
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i018",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 950,
+      "1": 1050
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i019",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 974,
+      "1": 1026
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i020",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 950,
+      "1": 1050
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i021",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 953,
+      "1": 1047
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i022",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 968,
+      "1": 1032
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i023",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 960,
+      "1": 1040
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i024",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 938,
+      "1": 1062
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i025",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 959,
+      "1": 1041
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i026",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 942,
+      "1": 1058
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i027",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 954,
+      "1": 1046
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i028",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 930,
+      "1": 1070
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i029",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 918,
+      "1": 1082
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i030",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 968,
+      "1": 1032
+    }
+  },
+  {
+    "cid": "dcsig_t0.00_i031",
+    "kind": "signal",
+    "theta0": 0.0,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 967,
+      "1": 1033
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i000",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 845,
+      "1": 1155
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i001",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1069,
+      "1": 931
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i002",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 863,
+      "1": 1137
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i003",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 847,
+      "1": 1153
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i004",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1092,
+      "1": 908
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i005",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 900,
+      "1": 1100
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i006",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1087,
+      "1": 913
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i007",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 888,
+      "1": 1112
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i008",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 890,
+      "1": 1110
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i009",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1077,
+      "1": 923
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i010",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 871,
+      "1": 1129
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i011",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 833,
+      "1": 1167
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i012",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 865,
+      "1": 1135
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i013",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 868,
+      "1": 1132
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i014",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 870,
+      "1": 1130
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i015",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1073,
+      "1": 927
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i016",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1049,
+      "1": 951
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i017",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 872,
+      "1": 1128
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i018",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 859,
+      "1": 1141
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i019",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 871,
+      "1": 1129
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i020",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1090,
+      "1": 910
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i021",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 844,
+      "1": 1156
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i022",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 850,
+      "1": 1150
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i023",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1087,
+      "1": 913
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i024",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 852,
+      "1": 1148
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i025",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 855,
+      "1": 1145
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i026",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 882,
+      "1": 1118
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i027",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1095,
+      "1": 905
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i028",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1068,
+      "1": 932
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i029",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1078,
+      "1": 922
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i030",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 853,
+      "1": 1147
+    }
+  },
+  {
+    "cid": "dcsig_t0.10_i031",
+    "kind": "signal",
+    "theta0": 0.1,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1081,
+      "1": 919
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i000",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1161,
+      "1": 839
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i001",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 750,
+      "1": 1250
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i002",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1137,
+      "1": 863
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i003",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 744,
+      "1": 1256
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i004",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1152,
+      "1": 848
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i005",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 728,
+      "1": 1272
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i006",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1125,
+      "1": 875
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i007",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1125,
+      "1": 875
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i008",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 812,
+      "1": 1188
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i009",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 802,
+      "1": 1198
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i010",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1195,
+      "1": 805
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i011",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 805,
+      "1": 1195
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i012",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1163,
+      "1": 837
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i013",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 744,
+      "1": 1256
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i014",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 755,
+      "1": 1245
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i015",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1135,
+      "1": 865
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i016",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1157,
+      "1": 843
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i017",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 774,
+      "1": 1226
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i018",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 806,
+      "1": 1194
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i019",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": -1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1176,
+      "1": 824
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i020",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 771,
+      "1": 1229
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i021",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1179,
+      "1": 821
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i022",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 743,
+      "1": 1257
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i023",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 788,
+      "1": 1212
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i024",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 734,
+      "1": 1266
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i025",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1175,
+      "1": 825
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i026",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 737,
+      "1": 1263
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i027",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 769,
+      "1": 1231
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i028",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 757,
+      "1": 1243
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i029",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": 1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1162,
+      "1": 838
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i030",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": -1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 792,
+      "1": 1208
+    }
+  },
+  {
+    "cid": "dcsig_t0.20_i031",
+    "kind": "signal",
+    "theta0": 0.2,
+    "s1": -1,
+    "c": 1,
+    "p": -1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 772,
+      "1": 1228
+    }
+  },
+  {
+    "cid": "dcvis_r000",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1993,
+      "1": 7
+    }
+  },
+  {
+    "cid": "dcvis_r001",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1992,
+      "1": 8
+    }
+  },
+  {
+    "cid": "dcvis_r002",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1983,
+      "1": 17
+    }
+  },
+  {
+    "cid": "dcvis_r003",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1989,
+      "1": 11
+    }
+  },
+  {
+    "cid": "dcvis_r004",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1989,
+      "1": 11
+    }
+  },
+  {
+    "cid": "dcvis_r005",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1996,
+      "1": 4
+    }
+  },
+  {
+    "cid": "dcvis_r006",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1995,
+      "1": 5
+    }
+  },
+  {
+    "cid": "dcvis_r007",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1994,
+      "1": 6
+    }
+  },
+  {
+    "cid": "dcvis_r008",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1992,
+      "1": 8
+    }
+  },
+  {
+    "cid": "dcvis_r009",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1998,
+      "1": 2
+    }
+  },
+  {
+    "cid": "dcvis_r010",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1994,
+      "1": 6
+    }
+  },
+  {
+    "cid": "dcvis_r011",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1992,
+      "1": 8
+    }
+  },
+  {
+    "cid": "dcvis_r012",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1996,
+      "1": 4
+    }
+  },
+  {
+    "cid": "dcvis_r013",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1995,
+      "1": 5
+    }
+  },
+  {
+    "cid": "dcvis_r014",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1995,
+      "1": 5
+    }
+  },
+  {
+    "cid": "dcvis_r015",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1996,
+      "1": 4
+    }
+  },
+  {
+    "cid": "dcvis_r016",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1996,
+      "1": 4
+    }
+  },
+  {
+    "cid": "dcvis_r017",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1997,
+      "1": 3
+    }
+  },
+  {
+    "cid": "dcvis_r018",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1992,
+      "1": 8
+    }
+  },
+  {
+    "cid": "dcvis_r019",
+    "kind": "viscal",
+    "theta0": 1.5707963267948966,
+    "s1": 1,
+    "c": 1,
+    "p": 1,
+    "qubits": [
+      53,
+      54
+    ],
+    "backend": "ibm_marrakesh",
+    "job_id": "da1eds63kjvs7386l5g0",
+    "shots": 2000,
+    "counts": {
+      "0": 1996,
+      "1": 4
+    }
+  }
+]

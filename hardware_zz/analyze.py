@@ -152,7 +152,7 @@ def figure_15(analysis, records, path=None):
     axB.set_ylabel(r"recovered  $\hat\kappa_{1j}$  (rad, over delay=%.2f us)" % (config.DELAY_S * 1e6))
     axB.set_title("(b) Real static ZZ coupling (characterization, no ground truth)")
 
-    fig.suptitle("Fig 15 — Static ZZ crosstalk recovered on real hardware", fontsize=13)
+    fig.suptitle("Static ZZ crosstalk recovered on real hardware", fontsize=13)
     fig.text(0.5, -0.02, _backend_caption(analysis, records), ha="center", fontsize=8)
     fig.tight_layout()
     _save(fig, path or os.path.join(config.FIG_DIR, "fig15_hardware_zz"))

@@ -156,7 +156,7 @@ def make_figure(rows):
                label="pairwise baseline (Q sequential experiments)")
     ax.set_xlabel(r"number of neighbors  $Q$")
     ax.set_ylabel(r"total shots to reach $\sigma_{\mathrm{target}}$ on every $\kappa_{1j}$")
-    ax.set_title(r"Fig 14 — Joint labeling is flat in $Q$; pairwise is linear")
+    ax.set_title(r"Joint labeling is flat in $Q$; pairwise is linear")
     ax.set_xticks(Qs)
     ax.legend(fontsize=9.5, loc="upper left")
     save(fig, "fig14_shot_cost")

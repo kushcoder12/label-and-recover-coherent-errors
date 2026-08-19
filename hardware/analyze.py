@@ -233,7 +233,7 @@ def figure_R1(analysis, records, depths_to_show=None, path=None):
 
     ax.set_xlabel(r"injected coherent phase per cycle  $\theta^*$  (rad)")
     ax.set_ylabel(r"recovered  $\hat{\theta}$  (rad)")
-    ax.set_title("Fig R1 — Label recovery of coherent phase on hardware")
+    ax.set_title("Label recovery of coherent phase on hardware")
     ax.legend(frameon=False, fontsize=9, loc="upper left")
     ax.grid(True, alpha=0.25)
     fig.text(0.5, -0.02, _backend_caption(analysis, records), ha="center", fontsize=8)
