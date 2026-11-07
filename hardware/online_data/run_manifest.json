@@ -1,0 +1,42 @@
+{
+  "backend": "ibm_marrakesh",
+  "qubit": 2,
+  "date": "2026-07-21T21:39:10.572271+00:00",
+  "options": {
+    "optimization_level": 0,
+    "twirling_enable_gates": false,
+    "twirling_enable_measure": false,
+    "dynamical_decoupling": false,
+    "measurement_level": 2,
+    "resilience_level": 0
+  },
+  "calib": {
+    "qubit": 2,
+    "T1": 0.0002795508896578044,
+    "T2": 0.000404655872047203,
+    "readout_err": 0.0028076171875,
+    "gate_err": 0.00012946633518430407
+  },
+  "grid": {
+    "thetas": [
+      0.0,
+      0.05,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "depths": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "instances": 50,
+    "shots": 3000,
+    "viscal_repeats": 20
+  },
+  "n_signal": 1500,
+  "n_viscal": 120
+}
