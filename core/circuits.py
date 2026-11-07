@@ -175,7 +175,7 @@ def multi_qubit_zz_probe(theta0, kappa_dict, s_1, c_dict, noise=None):
     to qubit 1 only (no neighbor-neighbor coupling). The state then evolves for unit
     time under the FULL (1+Q)-qubit static Hamiltonian
 
-        H = (theta0/2) Z_1 + sum_j (kappa_1j) Z_1 Z_j,
+        H = (theta0/2) Z_1 + sum_j (kappa_1j/2) Z_1 Z_j,
 
     twirled by s_1 (an X_1-dressing, which flips the sign of every Z_1-bearing term,
     since X_1 anticommutes with Z_1 and with Z_1 Z_j but not with Z_j alone). This is
