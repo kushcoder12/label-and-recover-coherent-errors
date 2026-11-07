@@ -75,9 +75,8 @@ Or `python run_all.py --live-full` (submit, poll, retrieve, analyze in one go). 
 live run writes to `online_data/` + `online_figures/`, kept separate from the offline
 `data/` + `figures/`.
 
-Needs the same OpenSSL 1.1.1+/3.x Python as `hardware/` (see `hardware/requirements.txt`
-and `hardware/README.md`); this repo already has `.venv312` set up with
-`qiskit>=1.2` + `qiskit-ibm-runtime>=0.30` for exactly this reason.
+Needs the same OpenSSL 1.1.1+/3.x Python as `hardware/` (see `hardware/requirements.txt`):
+`qiskit>=1.2` + `qiskit-ibm-runtime>=0.30`.
 
 ## Guardrails (enforced in code)
 

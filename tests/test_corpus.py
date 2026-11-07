@@ -58,11 +58,15 @@ def test_native_random_clifford():
 
 
 def run_all():
-    for t in [test_loader_parses_unitary, test_noiseless_recovery_across_families,
-              test_native_random_clifford]:
+    needs_qasm = [test_loader_parses_unitary, test_noiseless_recovery_across_families]
+    have_qasm = os.path.isdir(_QDIR)
+    for t in needs_qasm + [test_native_random_clifford]:
+        if t in needs_qasm and not have_qasm:
+            print(f"  SKIP  {t.__name__} (qasm/ not present; see README 'External data')")
+            continue
         t()
         print(f"  PASS  {t.__name__}")
-    print("test_corpus: ALL PASS")
+    print("test_corpus: ALL PASS" if have_qasm else "test_corpus: PASS (QASMBench tests skipped)")
 
 
 if __name__ == "__main__":

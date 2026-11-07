@@ -12,13 +12,23 @@ Numerical and real-hardware backbone for the result:
 > depth the recoverable information grows linearly (`~L`) while bounded coherent accumulation
 > saturates.
 
-The full derivation — conventions, equations, numeric oracles, and the depth theorem — is in
-**`label_and_recover_math_notes.pdf`**.
+**Paper:** K. Vyas, *Recovering Coherent Errors from Randomized-Compiling Labels*,
+[arXiv:2607.26756](https://arxiv.org/abs/2607.26756). The full derivation — conventions,
+equations, numeric oracles, and the depth theorem — is also in **`label_and_recover_math_notes.pdf`**.
 
-## Dependencies (hard rule: numpy + matplotlib only)
+**PennyLane implementation:** [`pennylane_impl/`](pennylane_impl/) re-implements the method as
+PennyLane transforms (`pauli_twirl`, `sign_label_twirl`), checks the conservation law and the
+depth theorem with exact autodiff and `qp.gradients.classical_fisher` / `quantum_fisher`, extends
+it to two-qubit ZZ crosstalk, re-analyses the `ibm_marrakesh` records, and is cross-validated
+against the numpy engine below. Start with the
+[tutorial notebook](pennylane_impl/notebooks/labeled_rc_pennylane.ipynb).
 
-No external quantum libraries. The only third-party packages are `numpy` and `matplotlib`.
-Everything else is built on the in-repo `core/` state-vector engine.
+## Dependencies
+
+The reference engine (`core/`, `experiments/`, `tests/`) uses **numpy + matplotlib only** — no
+external quantum libraries — so it can serve as an independent check. The live hardware scripts
+need qiskit (`hardware/requirements.txt`); the PennyLane layer has its own
+`pennylane_impl/requirements.txt`.
 
 ```bash
 # one-time setup
@@ -37,11 +47,13 @@ core/             state-vector engine + physics modules
                   asymmetric readout; density-matrix + trajectory modes
   error_map.py    multi-parameter coherent-error recovery, visibility-debiased
   qasm_loader.py  native OpenQASM 2.0 -> gate list, at the I/O boundary (no qiskit)
-experiments/      exp1..exp10 — each regenerates one figure and prints its oracle check
+experiments/      exp1..exp16 — each regenerates one figure and prints its oracle check
 tests/            oracle-backed verification (run these before trusting anything)
 figures/          output PDFs/PNGs (publication quality) + corpus_manifest.json
 hardware/         real-IBM-device experiment with owned per-layer labels (see below)
+hardware_zz/      multi-qubit ZZ and drive-crosstalk hardware experiments (own README)
 data_analysis/    coherent-counterpart analysis of a public IBM CB dataset (see below)
+pennylane_impl/   PennyLane transforms, tests and tutorial notebook (own README)
 label_and_recover_math_notes.pdf   the specification: math, conventions, oracles
 ```
 
@@ -77,8 +89,16 @@ or individually:
 .venv/bin/python tests/test_noise.py              # noise module N1-N6
 .venv/bin/python tests/test_noise_estimation.py   # robustness / unbiasedness under noise
 .venv/bin/python tests/test_error_map.py          # coherent-error map recovery
-.venv/bin/python tests/test_corpus.py             # QASMBench corpus generality (needs qasm/)
+.venv/bin/python tests/test_corpus.py             # QASMBench corpus generality (skips without qasm/)
 .venv/bin/python tests/test_shotcost.py           # shot-cost vs robust phase estimation
+.venv/bin/python tests/test_multiqubit_zz.py      # static ZZ crosstalk (exp11-13)
+.venv/bin/python tests/test_drive_crosstalk.py    # drive-induced crosstalk, Oracles DC1-DC3
+```
+
+The PennyLane layer has its own suite (needs `pennylane_impl/requirements.txt`):
+
+```bash
+python -m pytest pennylane_impl/tests
 ```
 
 Each test cross-checks code output against the hand-derived numeric oracles (O1–O5) documented
@@ -99,6 +119,9 @@ in `label_and_recover_math_notes.pdf`. If code disagrees with an oracle, the **c
 | Fig. 9 | `.venv/bin/python experiments/exp9_corpus.py` | Corpus generality across QFT/adder/QAOA/VQE/… (needs `qasm/`; see above) |
 | Fig. 10 | `.venv/bin/python experiments/exp10_shotcost.py` | Shot-cost positioning: labeled-RC (free, rides on RC) vs robust phase estimation |
 
+`exp11`–`exp16` regenerate the multi-qubit extension figures (two- and three-qubit ZZ
+crosstalk, joint-vs-pairwise cost, drive-induced crosstalk, variance cost; `fig12`–`fig18`).
+
 Or regenerate all at once:
 
 ```bash
@@ -114,8 +137,10 @@ one circuit per twirl instance, recording the exact per-cycle sign vector, so no
 lost. It recovers the injected coherent phase `θ*` from the label–outcome correlation, debiased by
 a measured visibility. The offline dress-rehearsal (`hardware/run_all.py`, no qiskit/network)
 reproduces the theory; the live path (`submit → retrieve → analyze`) requires qiskit + IBM Cloud
-credentials placed in `hardware/.env` (git-ignored — never committed). See `hardware/README.md`
-and `hardware/HARDWARE_FINDINGS.md`.
+credentials placed in `hardware/.env` (git-ignored — never committed). Run on `ibm_marrakesh`
+(IBM Heron r2): 1,620 circuits over θ* ∈ {0, 0.05, 0.1, 0.2, 0.3} rad and L ∈ {1, …, 32},
+with IBM's own twirling and dynamical decoupling off; see the paper for the results. The
+per-circuit records and the analysis of that run are in `hardware/online_data/`.
 
 ## Coherent-counterpart analysis of a public dataset (`data_analysis/`)
 
@@ -126,8 +151,8 @@ label-correlation coherent estimator with a permutation-null and a positive cont
 the dataset retains only the *net* twirl frame, so the depth-accumulating coherent signature the
 theorem predicts is (correctly) **null**; a real but shallow, non-accumulating correlation
 survives at `L=2`. This is a structural argument for a purpose-built RC experiment that logs
-per-layer labels — which is what `hardware/` does. Full write-up: `data_analysis/REAL_DATA_FINDINGS.md`.
-The raw dataset itself is not redistributed here (see "External data & circuits").
+per-layer labels — which is what `hardware/` does. The raw dataset itself is not redistributed
+here (see "External data & circuits").
 
 ## Reproducibility notes
 
@@ -141,8 +166,8 @@ The raw dataset itself is not redistributed here (see "External data & circuits"
 
 ## Citation
 
-If you use this code, please cite the accompanying paper (arXiv link to be added) and this
-repository. When using the external inputs, please also cite their sources: Chen et al.,
+If you use this code, please cite the accompanying paper,
+[arXiv:2607.26756](https://arxiv.org/abs/2607.26756), and this repository (`CITATION.cff`). When using the external inputs, please also cite their sources: Chen et al.,
 *The learnability of Pauli noise*, Nat. Commun. 14, 52 (2023)
 (https://github.com/csenrui/Pauli_Learnability), and QASMBench / Qiskit benchpress
 (https://github.com/Qiskit/benchpress).

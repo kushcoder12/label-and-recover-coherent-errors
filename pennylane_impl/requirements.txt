@@ -1,0 +1,4 @@
+pennylane==0.45.1
+numpy>=2
+matplotlib
+pytest

@@ -19,4 +19,4 @@ if __name__ == "__main__":
     cb_validation.main()
     print("\n" + "=" * 70, "\n[3/3] LABEL-CORRELATION COHERENT ESTIMATOR\n", "=" * 70, sep="")
     label_correlation.main()
-    print("\nDONE. See data_analysis/REAL_DATA_FINDINGS.md for the write-up.")
+    print("\nDONE. See the data_analysis section of the top-level README for the summary.")

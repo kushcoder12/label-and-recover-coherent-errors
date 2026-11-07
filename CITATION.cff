@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below and this repository."
+title: "label-and-recover-coherent-errors"
+authors:
+  - family-names: Vyas
+    given-names: Kushagra
+    affiliation: "Indian Institute of Technology Hyderabad"
+    orcid: "https://orcid.org/0009-0004-6641-4561"
+repository-code: "https://github.com/kushcoder12/label-and-recover-coherent-errors"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Recovering Coherent Errors from Randomized-Compiling Labels"
+  authors:
+    - family-names: Vyas
+      given-names: Kushagra
+  identifiers:
+    - type: other
+      value: "arXiv:2607.26756"
+  url: "https://arxiv.org/abs/2607.26756"

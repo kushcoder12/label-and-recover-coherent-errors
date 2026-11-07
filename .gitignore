@@ -2,7 +2,7 @@
 # Python / virtualenvs / build
 # ---------------------------------------------------------------------------
 .venv/
-.venv312/
+.venv*/
 venv/
 env/
 __pycache__/
@@ -37,8 +37,7 @@ qasm/
 data_analysis/cache/
 
 # ---------------------------------------------------------------------------
-# Project working notes / agent-workflow artifacts (not the scientific record)
+# Project working notes and drafts (not the scientific record)
 # ---------------------------------------------------------------------------
-CLAUDE.md
 HISTORY.md
 *.rtf
